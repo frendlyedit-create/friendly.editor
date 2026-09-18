@@ -24,11 +24,12 @@
                 <div class="text-3xl font-extrabold italic tracking-wider text-red-600 inline-block">FRIENDLY</div>
                 <div class="text-3xl font-black italic tracking-widest text-blue-900 inline-block ml-1">EDITOR</div>
             </div>
-            <!-- Moving Text -->
+            
+            <!-- Moving Text (Desktop) -->
             <div class="overflow-hidden w-full hidden sm:block">
-                <p class="text-xs font-semibold italic text-gray-700 tracking-wide animate-pulse">
+                <marquee direction="right" scrollamount="5" class="text-xs font-semibold italic text-gray-700 tracking-wide block">
                     Your Trusted Partner for Printing & Document Service
-                </p>
+                </marquee>
             </div>
         </div>
 
@@ -40,11 +41,11 @@
         </div>
     </header>
 
-    <!-- Mobile Sub-header -->
-    <div class="bg-gray-200 py-1.5 px-4 text-center sm:hidden border-b">
-        <p class="text-xs font-semibold italic text-gray-700 tracking-wide">
+    <!-- Mobile Sub-header (Moving Text) -->
+    <div class="bg-gray-200 py-1.5 px-4 text-center sm:hidden border-b overflow-hidden">
+        <marquee direction="right" scrollamount="5" class="text-xs font-semibold italic text-gray-700 tracking-wide block">
             Your Trusted Partner for Printing & Document Service
-        </p>
+        </marquee>
     </div>
 
     <!-- Navigation Bar -->
@@ -88,6 +89,7 @@
                         </a>
                     </div>
                 </div>
+
                 <!-- Contact Us Dropdown Trigger -->
                 <div class="relative">
                     <button id="contact-btn" class="hover:text-gray-300 transition duration-150 flex items-center space-x-1 focus:outline-none">
