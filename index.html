@@ -68,7 +68,28 @@
                     </button>
                 </div>
 
-                <a href="#" class="hover:text-gray-300 transition duration-150">Special Job</a>
+                <!-- Special Job Dropdown Trigger -->
+                <div class="relative">
+                    <button id="special-job-btn" class="hover:text-gray-300 transition duration-150 flex items-center space-x-1 focus:outline-none">
+                        <span>Special Job</span>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+
+                    <!-- Special Job Dropdown Menu -->
+                    <div id="special-job-dropdown" class="hidden absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-xl border border-gray-200 py-2 z-50">
+                        <a href="#" class="block px-4 py-2 text-sm font-semibold hover:bg-blue-50 hover:text-blue-900 transition duration-150 border-b border-gray-100">
+                            <i class="fa-solid fa-id-card mr-2 text-blue-900"></i> BIO DATA
+                        </a>
+                        <a href="#" class="block px-4 py-2 text-sm font-semibold hover:bg-blue-50 hover:text-blue-900 transition duration-150 border-b border-gray-100">
+                            <i class="fa-solid fa-file-contract mr-2 text-blue-900"></i> SERVICE LETTER
+                        </a>
+                        <a href="#" class="block px-4 py-2 text-sm font-semibold hover:bg-blue-50 hover:text-blue-900 transition duration-150">
+                            <i class="fa-solid fa-laptop-code mr-2 text-blue-900"></i> ONLINE APPLICATION
+                        </a>
+                    </div>
+                </div>
+
+                <a href="#" class="hover:text-gray-300 transition duration-150">Branch Network</a>
                 <a href="#" class="hover:text-gray-300 transition duration-150">Contact Us</a>
                 <a href="#" class="hover:text-gray-300 transition duration-150">Track Your Item</a>
             </div>
@@ -122,6 +143,19 @@
                 </div>
             </div>
 
+            <!-- Mobile Special Job Dropdown -->
+            <div>
+                <button id="mobile-special-btn" class="w-full text-left py-1 hover:text-gray-300 flex justify-between items-center">
+                    <span>Special Job</span>
+                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                </button>
+                <div id="mobile-special-content" class="hidden bg-blue-900 p-2 rounded text-xs space-y-2 my-1 text-gray-200 pl-4">
+                    <a href="#" class="block py-1 hover:text-white"><i class="fa-solid fa-id-card mr-2"></i> BIO DATA</a>
+                    <a href="#" class="block py-1 hover:text-white"><i class="fa-solid fa-file-contract mr-2"></i> SERVICE LETTER</a>
+                    <a href="#" class="block py-1 hover:text-white"><i class="fa-solid fa-laptop-code mr-2"></i> ONLINE APPLICATION</a>
+                </div>
+            </div>
+
             <a href="#" class="block py-1 hover:text-gray-300">Branch Network</a>
             <a href="#" class="block py-1 hover:text-gray-300">Contact Us</a>
             <a href="#" class="block py-1 hover:text-gray-300">Track Your Item</a>
@@ -149,7 +183,7 @@
         </p>
     </footer>
 
-    <!-- JavaScript for Mobile Menu & Dropdown -->
+    <!-- JavaScript for Mobile Menu & Dropdowns -->
     <script>
         // Mobile Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
@@ -165,7 +199,18 @@
 
         aboutBtn.addEventListener('click', (e) => {
             e.stopPropagation();
+            specialJobDropdown.classList.add('hidden'); // Close Special Job dropdown if open
             aboutDropdown.classList.toggle('hidden');
+        });
+
+        // Desktop Special Job Dropdown
+        const specialJobBtn = document.getElementById('special-job-btn');
+        const specialJobDropdown = document.getElementById('special-job-dropdown');
+
+        specialJobBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            aboutDropdown.classList.add('hidden'); // Close About Us dropdown if open
+            specialJobDropdown.classList.toggle('hidden');
         });
 
         // Mobile About Us Toggle
@@ -176,10 +221,21 @@
             mobileAboutContent.classList.toggle('hidden');
         });
 
-        // Close Dropdown when clicking outside
+        // Mobile Special Job Toggle
+        const mobileSpecialBtn = document.getElementById('mobile-special-btn');
+        const mobileSpecialContent = document.getElementById('mobile-special-content');
+
+        mobileSpecialBtn.addEventListener('click', () => {
+            mobileSpecialContent.classList.toggle('hidden');
+        });
+
+        // Close Dropdowns when clicking outside
         window.addEventListener('click', (e) => {
             if (!aboutDropdown.contains(e.target) && e.target !== aboutBtn) {
                 aboutDropdown.classList.add('hidden');
+            }
+            if (!specialJobDropdown.contains(e.target) && !specialJobBtn.contains(e.target)) {
+                specialJobDropdown.classList.add('hidden');
             }
         });
     </script>
