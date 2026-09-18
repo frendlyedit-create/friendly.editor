@@ -1,60 +1,91 @@
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Friendly Editor | Printing & Document Services</title>
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,"Noto Sans Sinhala",sans-serif}
-    body{background:#f5f7fb;color:#1f2937;line-height:1}
-    header{background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('my.jpg');background-size:cover;background-position:center;color:#fff;text-align:center;padding:70px 20px 80px}
-    header h1{font-size:clamp(2.2rem,6vw,4rem);letter-spacing:2px}
-    header p{margin-top:10px;font-size:1.1rem;opacity:.92}
-    .container{max-width:1050px;margin:-45px auto 0;padding:0 20px 40px}
-    .card-services {
-    background: linear-gradient(rgba(250,250,250,0.88), rgba(250,250,250,0.88)), url('nnn.jpg') center/cover;
-    border-radius: 14px;
-    padding: 24px;
-    margin-bottom: 25px;
-}
-.card-location {
-    background: linear-gradient(rgba(250,250,250,0.88), rgba(250,250,250,0.88)), url('ima.jpg') center/cover;
-    border-radius: 14px;
-    padding: 24px;
-    margin-bottom: 25px;
-}
-    h2{color:#0056b3;margin-bottom:20px;font-size:1.5rem}
-    .services-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;list-style:none}
-    .services-list li{background:#f1f6ff;border:1px solid #dbeafe;padding:18px;border-radius:12px;text-align:center;font-weight:700}
-    .services-list li:hover{transform:translateY(-3px);transition:.25s}
-    .info-item{padding:12px 0;border-bottom:1px solid #edf0f5}
-    .info-item:last-child{border-bottom:none}
-    .btn-whatsapp{display:block;text-align:center;background:#25D366;color:#fff;padding:16px;text-decoration:none;font-size:1.1rem;font-weight:bold;border-radius:12px;margin-top:20px}
-    .btn-whatsapp:hover{background:#1eb857}
-    footer{text-align:center;padding:25px;background:#172033;color:#fff}
-    @media(max-width:600px){header{padding:50px 15px 65px}.card{padding:20px}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Xpress</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .custom-blue {
+            background-color: #002B7F;
+        }
+    </style>
 </head>
-<body>
-<header>
-  <h1>FRIENDLY EDITOR</h1>
-  <p><marquee scrollamount="6">Your Trusted Partner for Printing & Document Services</marquee></p>
-</header>
-<div class="card-services">
-    <h2>අපගේ සේවාවන්</h2>
-    <ul class="services-list">
-      <li>🖼️ Photo Editing</li>
-      <li>⌨️ Typesetting (Sinhala / English)</li>
-      <li>📋 Document Creation</li>
-      <li>📋 Online Application Apply</li>
-    </ul>
-  <div class="card-location">
-    <h2>Business Hours & Location</h2>
-    <div class="info-item"><strong>📍 Address:</strong> Kandy</div>
-    <div class="info-item"><strong>🕒 Opening Hours:</strong> Open Daily from 08:00 AM to 10:00 PM</div>
-    <a class="btn-whatsapp" href="https://wa.me/94751659106?text=Hello%20Friendly%20Editor,%20I%20need%20a%20service." target="_blank" rel="noopener">💬 Send Document via WhatsApp</a>
-  </section>
-</main>
-<footer>© 2026 Friendly Editor. All Rights Reserved.</footer>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Header Section -->
+    <header class="bg-white py-4 px-6 md:px-12 flex justify-between items-center border-b">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <div class="text-left">
+                <div class="text-3xl font-extrabold italic tracking-wider text-red-600 inline-block">PROMPT</div>
+                <div class="text-4xl font-black italic tracking-widest text-blue-900 inline-block ml-1">XP</div>
+                <div class="text-xs italic text-gray-700 tracking-wide mt-[-4px]">Speed, Accuracy and Care</div>
+            </div>
+        </div>
+
+        <!-- Login Button -->
+        <div>
+            <a href="#" class="bg-blue-900 hover:bg-blue-800 text-white font-semibold py-2 px-8 rounded-sm shadow text-sm transition duration-200">
+                Login
+            </a>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="custom-blue text-white shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+
+            <!-- Navigation Links -->
+            <div id="menu" class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide">
+                <a href="#" class="hover:text-gray-300 transition duration-150">Home</a>
+                <a href="#" class="hover:text-gray-300 transition duration-150">About Us</a>
+                <a href="#" class="hover:text-gray-300 transition duration-150">Branch Network</a>
+                <a href="#" class="hover:text-gray-300 transition duration-150">Contact Us</a>
+                <a href="#" class="hover:text-gray-300 transition duration-150">Track Your Item</a>
+            </div>
+
+            <!-- Contact Number -->
+            <div class="flex items-center space-x-2 text-sm md:text-base font-bold">
+                <i class="fa-solid fa-phone-volume text-gray-300 text-lg"></i>
+                <span>+94 114 422 733</span>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden custom-blue px-6 pt-2 pb-4 space-y-2 border-t border-blue-800">
+            <a href="#" class="block py-1 hover:text-gray-300">Home</a>
+            <a href="#" class="block py-1 hover:text-gray-300">About Us</a>
+            <a href="#" class="block py-1 hover:text-gray-300">Branch Network</a>
+            <a href="#" class="block py-1 hover:text-gray-300">Contact Us</a>
+            <a href="#" class="block py-1 hover:text-gray-300">Track Your Item</a>
+        </div>
+    </nav>
+
+    <!-- Content Section -->
+    <main class="container mx-auto px-6 py-12 text-center">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">Welcome to Prompt Xpress</h1>
+        <p class="text-gray-600 max-w-xl mx-auto">
+            Your trusted courier partner for fast, accurate, and reliable delivery services across the island.
+        </p>
+    </main>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>
