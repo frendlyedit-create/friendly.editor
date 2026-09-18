@@ -48,7 +48,7 @@
     </div>
 
     <!-- Navigation Bar -->
-    <nav class="custom-blue text-white shadow-md">
+    <nav class="custom-blue text-white shadow-md relative z-30">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             
             <!-- Mobile Menu Button -->
@@ -57,10 +57,18 @@
             </button>
 
             <!-- Navigation Links -->
-            <div id="menu" class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide">
+            <div id="menu" class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide items-center">
                 <a href="#" class="hover:text-gray-300 transition duration-150">Home</a>
-                <a href="javascript:void(0)" id="about-link" class="hover:text-gray-300 transition duration-150">About Us</a>
-                <a href="#" class="hover:text-gray-300 transition duration-150">Special Service</a>
+                
+                <!-- About Us Dropdown Trigger -->
+                <div class="relative">
+                    <button id="about-btn" class="hover:text-gray-300 transition duration-150 flex items-center space-x-1 focus:outline-none">
+                        <span>About Us</span>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                </div>
+
+                <a href="#" class="hover:text-gray-300 transition duration-150">Branch Network</a>
                 <a href="#" class="hover:text-gray-300 transition duration-150">Contact Us</a>
                 <a href="#" class="hover:text-gray-300 transition duration-150">Track Your Item</a>
             </div>
@@ -74,10 +82,46 @@
             </div>
         </div>
 
+        <!-- Desktop About Us Dropdown Panel -->
+        <div id="about-dropdown" class="hidden absolute left-0 right-0 top-full bg-white text-gray-800 shadow-xl border-t-2 border-red-600 transition-all duration-300 z-40">
+            <div class="container mx-auto p-6 max-w-4xl">
+                <h3 class="text-xl font-bold text-blue-900 mb-2 border-b pb-2">About Friendly Editor</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-3">
+                    Welcome to <strong>Friendly Editor</strong>! We are your premier destination for high-quality printing, typesetting, and document processing services. Our mission is to provide fast, reliable, and professional solutions tailored to meet all your personal and business documentation needs.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs mt-4 bg-blue-50 p-3 rounded-lg border border-blue-100">
+                    <div>
+                        <strong class="text-blue-900 block mb-1">🖨️ Printing & Copying</strong>
+                        <span>High-quality document printing and copying with precision.</span>
+                    </div>
+                    <div>
+                        <strong class="text-blue-900 block mb-1">✍️ Document Design</strong>
+                        <span>Professional layout design, editing, and document formatting.</span>
+                    </div>
+                    <div>
+                        <strong class="text-blue-900 block mb-1">⚡ Fast Delivery</strong>
+                        <span>Quick service delivery and hassle-free online order processing.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden custom-blue px-6 pt-2 pb-4 space-y-2 border-t border-blue-800">
             <a href="#" class="block py-1 hover:text-gray-300">Home</a>
-            <a href="javascript:void(0)" id="mobile-about-link" class="block py-1 hover:text-gray-300">About Us</a>
+            
+            <!-- Mobile About Us Dropdown -->
+            <div>
+                <button id="mobile-about-btn" class="w-full text-left py-1 hover:text-gray-300 flex justify-between items-center">
+                    <span>About Us</span>
+                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                </button>
+                <div id="mobile-about-content" class="hidden bg-blue-900 p-3 rounded text-xs space-y-2 my-1 text-gray-200">
+                    <p>Welcome to <strong>Friendly Editor</strong>! We specialize in high-quality printing, typesetting, and document services.</p>
+                    <p>Our goal is fast, reliable, and professional service for all your documentation needs.</p>
+                </div>
+            </div>
+
             <a href="#" class="block py-1 hover:text-gray-300">Branch Network</a>
             <a href="#" class="block py-1 hover:text-gray-300">Contact Us</a>
             <a href="#" class="block py-1 hover:text-gray-300">Track Your Item</a>
@@ -98,44 +142,6 @@
         </div>
     </main>
 
-    <!-- About Us Modal (Pop-up Window) -->
-    <div id="about-modal" class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden px-4">
-        <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 relative animate-fade-in border-t-4 border-blue-900">
-            <!-- Close Button -->
-            <button id="close-modal" class="absolute top-3 right-4 text-gray-500 hover:text-red-600 text-2xl font-bold focus:outline-none">
-                &times;
-            </button>
-            
-            <div class="text-center mb-4">
-                <h2 class="text-2xl font-bold text-blue-900">About Friendly Editor</h2>
-                <div class="w-16 h-1 bg-red-600 mx-auto mt-1 rounded"></div>
-            </div>
-
-            <div class="text-gray-700 space-y-3 text-sm md:text-base leading-relaxed text-justify">
-                <p>
-                    Welcome to <strong>Friendly Editor</strong>! We are your premier destination for high-quality printing, typesetting, and document processing services.
-                </p>
-                <p>
-                    Our mission is to provide fast, reliable, and professional solutions tailored to meet all your personal and business documentation needs with utmost precision and care.
-                </p>
-                <div class="bg-gray-100 p-3 rounded-lg text-xs md:text-sm text-gray-800 border-l-4 border-blue-800">
-                    <strong>Our Core Services:</strong>
-                    <ul class="list-disc list-inside mt-1 space-y-1">
-                        <li>High-Speed Document Printing & Copying</li>
-                        <li>Professional Document Editing & Layout Design</li>
-                        <li>Fast Delivery and Online Order Support</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="mt-6 text-center">
-                <button id="close-modal-btn" class="bg-blue-900 hover:bg-blue-800 text-white font-semibold py-2 px-6 rounded-md shadow text-sm transition duration-200">
-                    Close
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- Footer Section -->
     <footer class="custom-blue text-white py-2 px-6">
         <p class="text-right text-[11px] opacity-80">
@@ -143,9 +149,9 @@
         </p>
     </footer>
 
-    <!-- JavaScript for Mobile Menu & About Us Modal -->
+    <!-- JavaScript for Mobile Menu & Dropdown -->
     <script>
-        // Mobile Menu Elements
+        // Mobile Menu Toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -153,36 +159,27 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // About Us Modal Elements
-        const aboutLink = document.getElementById('about-link');
-        const mobileAboutLink = document.getElementById('mobile-about-link');
-        const aboutModal = document.getElementById('about-modal');
-        const closeModal = document.getElementById('close-modal');
-        const closeModalBtn = document.getElementById('close-modal-btn');
+        // Desktop About Us Dropdown
+        const aboutBtn = document.getElementById('about-btn');
+        const aboutDropdown = document.getElementById('about-dropdown');
 
-        // Function to Open Modal
-        function openAboutModal(e) {
-            e.preventDefault();
-            aboutModal.classList.remove('hidden');
-            if (!mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-            }
-        }
+        aboutBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            aboutDropdown.classList.toggle('hidden');
+        });
 
-        // Function to Close Modal
-        function closeAboutModal() {
-            aboutModal.classList.add('hidden');
-        }
+        // Mobile About Us Toggle
+        const mobileAboutBtn = document.getElementById('mobile-about-btn');
+        const mobileAboutContent = document.getElementById('mobile-about-content');
 
-        aboutLink.addEventListener('click', openAboutModal);
-        mobileAboutLink.addEventListener('click', openAboutModal);
-        closeModal.addEventListener('click', closeAboutModal);
-        closeModalBtn.addEventListener('click', closeAboutModal);
+        mobileAboutBtn.addEventListener('click', () => {
+            mobileAboutContent.classList.toggle('hidden');
+        });
 
-        // Close Modal when clicking outside the box
+        // Close Dropdown when clicking outside
         window.addEventListener('click', (e) => {
-            if (e.target === aboutModal) {
-                closeAboutModal();
+            if (!aboutDropdown.contains(e.target) && e.target !== aboutBtn) {
+                aboutDropdown.classList.add('hidden');
             }
         });
     </script>
