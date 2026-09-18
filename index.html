@@ -18,12 +18,17 @@
 
     <!-- Header Section -->
     <header class="bg-white py-4 px-6 md:px-12 flex justify-between items-center border-b">
-        <!-- Logo -->
-        <div class="flex items-center">
-            <div class="text-left">
+        <!-- Logo & Moving Text -->
+        <div class="flex items-center space-x-4 max-w-xl">
+            <div class="text-left whitespace-nowrap">
                 <div class="text-3xl font-extrabold italic tracking-wider text-red-600 inline-block">FRIENDLY</div>
                 <div class="text-3xl font-black italic tracking-widest text-blue-900 inline-block ml-1">EDITOR</div>
-                <div class="text-xs italic text-gray-700 tracking-wide mt-[-4px]">Speed, Accuracy and Care</div>
+            </div>
+            <!-- Moving Text (Marquee) -->
+            <div class="overflow-hidden w-full hidden sm:block">
+                <marquee class="text-xs font-semibold italic text-gray-700 tracking-wide" behavior="scroll" direction="left">
+                    Your Trusted Partner for Printing & Document Service
+                </marquee>
             </div>
         </div>
 
@@ -34,6 +39,13 @@
             </a>
         </div>
     </header>
+
+    <!-- Moving Text for Small Screens (Mobile) -->
+    <div class="bg-gray-200 py-1 sm:hidden">
+        <marquee class="text-xs font-semibold italic text-gray-700 tracking-wide" behavior="scroll" direction="left">
+            Your Trusted Partner for Printing & Document Service
+        </marquee>
+    </div>
 
     <!-- Navigation Bar -->
     <nav class="custom-blue text-white shadow-md">
@@ -74,7 +86,7 @@
     <main class="container mx-auto px-6 py-12 text-center">
         <h1 class="text-3xl font-bold text-gray-800 mb-4">Welcome to Friendly Editor</h1>
         <p class="text-gray-600 max-w-xl mx-auto">
-            Your trusted partner for fast, accurate, and reliable services.
+            Your Trusted Partner for Printing & Document Service.
         </p>
     </main>
 
