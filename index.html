@@ -172,36 +172,61 @@
 
     <!-- JavaScript Logic -->
     <script>
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+  function openModal() {
+    document.getElementById('trackModal').style.display = 'block';
+  }
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+  function closeModal() {
+    document.getElementById('trackModal').style.display = 'none';
+    document.getElementById('result').innerHTML = '';
+    document.getElementById('jobNoInput').value = '';
+  }
 
-        const dropdownBtns = document.querySelectorAll('.dropdown-btn');
-        const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+  async function trackItem() {
+    const jobNo = document.getElementById('jobNoInput').value.trim().toUpperCase();
+    const resultDiv = document.getElementById('result');
 
-        dropdownBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const targetId = btn.getAttribute('data-target');
-                const targetMenu = document.getElementById(targetId);
+    if (!jobNo) {
+      resultDiv.innerHTML = "<span style='color:red;'>කරුණාකර Job Number එක ඇතුළත් කරන්න.</span>";
+      return;
+    }
 
-                dropdownMenus.forEach(menu => {
-                    if (menu !== targetMenu) menu.classList.add('hidden');
-                });
+    resultDiv.innerHTML = "සොයමින් පවතී...";
 
-                if (targetMenu) {
-                    targetMenu.classList.toggle('hidden');
-                }
-            });
-        });
+    try {
+      // ඔබ සාදාගත් Google Sheet එකේ Direct URL එක
+      const sheetId = '1DTe6dncmGxaapgTGcmejXJCozCy4KIKYb_YT5xlwMvQ';
+      const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
 
-        window.addEventListener('click', () => {
-            dropdownMenus.forEach(menu => menu.classList.add('hidden'));
-        });
-    </script>
+      const response = await fetch(url);
+      const text = await response.text();
+      
+      const json = JSON.parse(text.substr(47).slice(0, -2));
+      const rows = json.table.rows;
+
+      let foundUrl = null;
+
+      for (let row of rows) {
+        const currentJobNo = row.c[0] ? row.c[0].v.toString().trim().toUpperCase() : '';
+        if (currentJobNo === jobNo) {
+          foundUrl = row.c[1] ? row.c[1].v : null;
+          break;
+        }
+      }
+
+      if (foundUrl) {
+        resultDiv.innerHTML = `
+          <p style="color:green; margin-bottom:10px;">ඔබගේ Document එක සූදානම්!</p>
+          <a href="${foundUrl}" target="_blank" style="display:inline-block; padding:10px 18px; background-color:#28a745; color:white; text-decoration:none; border-radius:5px;">Document එක බලන්න</a>
+        `;
+      } else {
+        resultDiv.innerHTML = "<span style='color:red;'>මෙම Job Number එකට අදාළ Document එකක් හමු නොවුණි.</span>";
+      }
+    } catch (error) {
+      resultDiv.innerHTML = "<span style='color:red;'>දෝෂයක් සිදු විය. පසුව නැවත උත්සාහ කරන්න.</span>";
+    }
+  }
+</script>
     <!-- Track Your Item Pop-up Modal -->
 <div id="trackModal" class="modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6);">
   <div style="background-color:#fff; margin:10% auto; padding:25px; border-radius:10px; width:90%; max-width:450px; text-align:center; position:relative; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);">
