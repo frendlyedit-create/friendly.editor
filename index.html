@@ -7,29 +7,44 @@
     <!-- Tailwind CSS & FontAwesome -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* දකුණේ සිට වමට යන Marquee Animation එක */
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 12s linear infinite;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 font-sans flex flex-col min-h-screen">
 
     <!-- Header Section -->
-    <header class="bg-white py-4 px-6 md:px-12 flex justify-between items-center border-b">
-        <div class="flex items-center space-x-4 max-w-xl">
+    <header class="bg-white py-4 px-6 md:px-12 flex justify-between items-center border-b overflow-hidden">
+        <div class="flex items-center space-x-4 max-w-xl w-full">
             <div class="text-left whitespace-nowrap">
                 <span class="text-3xl font-extrabold italic tracking-wider text-red-600">FRIENDLY</span>
                 <span class="text-3xl font-black italic tracking-widest text-[#002B7F] ml-1">EDITOR</span>
             </div>
+            
+            <!-- Moving Text (Desktop) -->
             <div class="overflow-hidden w-full hidden sm:block">
-                <p class="text-xs font-semibold italic text-gray-700 tracking-wide">
+                <div class="animate-marquee text-xs font-semibold italic text-gray-700 tracking-wide">
                     Your Trusted Partner for Printing &amp; Document Service
-                </p>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Mobile Sub-header -->
-    <div class="bg-gray-200 py-1.5 px-4 text-center sm:hidden border-b">
-        <p class="text-xs font-semibold italic text-gray-700 tracking-wide">
+    <!-- Mobile Sub-header (Moving Text) -->
+    <div class="bg-gray-200 py-1.5 px-4 text-center sm:hidden border-b overflow-hidden">
+        <div class="animate-marquee text-xs font-semibold italic text-gray-700 tracking-wide">
             Your Trusted Partner for Printing &amp; Document Service
-        </p>
+        </div>
     </div>
 
     <!-- Navigation Bar -->
@@ -154,9 +169,8 @@
         </p>
     </footer>
 
-    <!-- Optimized JavaScript -->
+    <!-- JavaScript Logic -->
     <script>
-        // Mobile Navigation Toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -164,7 +178,6 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Unified Dropdown Toggle Logic
         const dropdownBtns = document.querySelectorAll('.dropdown-btn');
         const dropdownMenus = document.querySelectorAll('.dropdown-menu');
 
@@ -184,7 +197,6 @@
             });
         });
 
-        // Close dropdowns when clicking outside
         window.addEventListener('click', () => {
             dropdownMenus.forEach(menu => menu.classList.add('hidden'));
         });
