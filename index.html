@@ -20,7 +20,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 font-sans flex flex-col min-h-screen">
+<body class="bg-gray-100 font-sans flex flex-col min-h-screen text-gray-800">
 
     <!-- Header Section -->
     <header class="bg-white py-4 px-6 md:px-12 flex justify-between items-center border-b overflow-hidden">
@@ -57,7 +57,7 @@
                 <i class="fa-solid fa-bars text-2xl"></i>
             </button>
 
-            <!-- Navigation Links -->
+            <!-- Navigation Links (Desktop) -->
             <div id="menu" class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide items-center">
                 <a href="index.html" class="hover:text-gray-300 transition">Home</a>
                 
@@ -67,6 +67,35 @@
                         <span>About Us</span>
                         <i class="fa-solid fa-chevron-down text-xs"></i>
                     </button>
+                </div>
+
+                <!-- Our Services Dropdown Trigger (අලුතින් එකතු කරන ලදි) -->
+                <div class="relative dropdown-container">
+                    <button class="dropdown-btn hover:text-gray-300 transition flex items-center space-x-1 focus:outline-none" data-target="services-dropdown">
+                        <span>Our Services</span>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+
+                    <div id="services-dropdown" class="dropdown-menu hidden absolute left-0 mt-2 w-56 bg-white text-gray-800 rounded-md shadow-xl border border-gray-200 py-2 z-50">
+                        <a href="./pages/bio-data.html" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
+                            <i class="fa-solid fa-id-card mr-2 text-blue-900"></i> Bio Data
+                        </a>
+                        <a href="./pages/service-letter.html" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
+                            <i class="fa-solid fa-file-contract mr-2 text-blue-900"></i> Service Letter
+                        </a>
+                        <a href="./pages/online-application.html" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
+                            <i class="fa-solid fa-laptop-code mr-2 text-blue-900"></i> Any Online Application
+                        </a>
+                        <a href="./pages/photo-editing.html" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
+                            <i class="fa-solid fa-image mr-2 text-blue-900"></i> Photo Editing
+                        </a>
+                        <a href="./pages/video-editing.html" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
+                            <i class="fa-solid fa-video mr-2 text-blue-900"></i> Video Editing
+                        </a>
+                        <a href="./pages/any-design.html" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900">
+                            <i class="fa-solid fa-pen-ruler mr-2 text-blue-900"></i> Any Design
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Contact Us Dropdown Trigger -->
@@ -109,10 +138,27 @@
             </div>
         </div>
 
-        <!-- Mobile Menu Container -->
+        <!-- Mobile Navigation Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-[#002B7F] px-6 pt-2 pb-4 space-y-2 border-t border-blue-800">
-            <a href="index.html" class="block py-1 hover:text-gray-300">Home</a>
-            <a href="javascript:void(0)" onclick="openModal()" class="block py-1 hover:text-gray-300">Track Your Item</a>
+            <a href="index.html" class="block py-1 hover:text-gray-300 border-b border-blue-900/50">Home</a>
+            <a href="javascript:void(0)" onclick="openModal()" class="block py-1 hover:text-gray-300 border-b border-blue-900/50">Track Your Item</a>
+            
+            <!-- Mobile Our Services Items -->
+            <div class="pt-2 text-xs text-blue-200 uppercase tracking-wider">Our Services</div>
+            <a href="./pages/bio-data.html" class="block py-1 text-xs hover:text-gray-300 pl-2">• Bio Data</a>
+            <a href="./pages/service-letter.html" class="block py-1 text-xs hover:text-gray-300 pl-2">• Service Letter</a>
+            <a href="./pages/online-application.html" class="block py-1 text-xs hover:text-gray-300 pl-2">• Any Online Application</a>
+            <a href="./pages/photo-editing.html" class="block py-1 text-xs hover:text-gray-300 pl-2">• Photo Editing</a>
+            <a href="./pages/video-editing.html" class="block py-1 text-xs hover:text-gray-300 pl-2">• Video Editing</a>
+            <a href="./pages/any-design.html" class="block py-1 text-xs hover:text-gray-300 pl-2">• Any Design</a>
+
+            <div class="pt-2 text-xs text-blue-200 uppercase tracking-wider">Contact Info</div>
+            <a href="mailto:friendly.aeditor@gmail.com" class="block py-1 text-xs hover:text-gray-300">
+                <i class="fa-solid fa-envelope mr-1 text-red-400"></i> friendly.aeditor@gmail.com
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=+94751659106" target="_blank" class="block py-1 text-xs hover:text-gray-300">
+                <i class="fa-brands fa-whatsapp mr-1 text-green-400"></i> WhatsApp (+94751659106)
+            </a>
         </div>
     </nav>
 
@@ -171,85 +217,119 @@
     </footer>
 
     <!-- Track Your Item Pop-up Modal -->
-<div id="trackModal" class="modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.6);">
-  <div style="background-color:#fff; margin:10% auto; padding:25px; border-radius:10px; width:90%; max-width:450px; text-align:center; position:relative; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);">
-    <span onclick="closeModal()" style="position:absolute; right:15px; top:10px; font-size:24px; cursor:pointer; font-weight:bold; color:#aaa;">&times;</span>
-    <h3 style="color:#003366; margin-bottom:15px; font-family:sans-serif;">Track Your Document</h3>
-    
-    <input type="tel" id="jobNoInput" placeholder="දුරකථන අංකය ඇතුළත් කරන්න (eg: 0751659106)" style="width:80%; padding:10px; border:1px solid #ccc; border-radius:5px; margin-bottom:10px; outline:none;">
-    <br>
-    <button onclick="trackItem()" style="padding:10px 25px; background-color:#003366; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">Search</button>
+    <div id="trackModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+        <div class="bg-white rounded-xl max-w-md w-full p-6 text-center relative shadow-2xl transform transition-all">
+            <button onclick="closeModal()" class="absolute right-4 top-3 text-gray-400 hover:text-gray-600 text-2xl font-bold focus:outline-none">&times;</button>
+            
+            <h3 class="text-xl font-bold text-[#002B7F] mb-4">Track Your Document</h3>
+            
+            <input type="tel" id="jobNoInput" placeholder="දුරකථන අංකය ඇතුළත් කරන්න (eg: 0751659106)" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg mb-3 focus:ring-2 focus:ring-[#002B7F] focus:outline-none text-sm text-center">
+            
+            <button onclick="trackItem()" class="w-full py-2.5 bg-[#002B7F] hover:bg-blue-900 text-white font-bold rounded-lg transition text-sm shadow-md">Search</button>
 
-    <div id="result" style="margin-top:20px; font-weight:bold; font-family:sans-serif;"></div>
-  </div>
-</div>
+            <div id="result" class="mt-4 font-semibold text-sm"></div>
+        </div>
+    </div>
 
     <!-- JavaScript Logic -->
-   <script>
-  function openModal() {
-    document.getElementById('trackModal').style.display = 'block';
-  }
+    <script>
+        // Toggle Mobile Navigation
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
 
-  function closeModal() {
-    document.getElementById('trackModal').style.display = 'none';
-    document.getElementById('result').innerHTML = '';
-    document.getElementById('jobNoInput').value = '';
-  }
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-  async function trackItem() {
-    // ඇතුළත් කරන අංකයේ හිස්තැන් සහ සංකේත (spaces, dashes, +94) ඉවත් කර සාමාන්‍යකරණය කිරීම
-    let phoneInput = document.getElementById('jobNoInput').value.trim();
-    phoneInput = phoneInput.replace(/\s+/g, '').replace(/-/g, '').replace(/^\+94/, '0');
+        // Toggle Desktop Dropdown Menus
+        const dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        
+        dropdownBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const targetId = btn.getAttribute('data-target');
+                const targetMenu = document.getElementById(targetId);
+                
+                // Hide other dropdown menus
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    if (menu.id !== targetId) menu.classList.add('hidden');
+                });
+                
+                if (targetMenu) {
+                    targetMenu.classList.toggle('hidden');
+                }
+            });
+        });
 
-    const resultDiv = document.getElementById('result');
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                menu.classList.add('hidden');
+            });
+        });
 
-    if (!phoneInput) {
-      resultDiv.innerHTML = "<span style='color:red;'>කරුණාකර ඔබගේ දුරකථන අංකය ඇතුළත් කරන්න.</span>";
-      return;
-    }
-
-    resultDiv.innerHTML = "සොයමින් පවතී...";
-
-    try {
-      // ඔබගේ Google Sheet ID එක
-      const sheetId = '1DTe6dncmGxaapgTGcmejXJCozCy4KIKYb_YT5xlwMvQ';
-      const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
-
-      const response = await fetch(url);
-      const text = await response.text();
-      
-      const json = JSON.parse(text.substring(47, text.length - 2));
-      const rows = json.table.rows;
-
-      let foundUrl = null;
-
-      for (let row of rows) {
-        if (!row.c || !row.c[0]) continue;
-
-        // Sheet එකේ ඇති දුරකථන අංකය Clean කර ගැනීම
-        let sheetPhone = row.c[0].v.toString().trim();
-        sheetPhone = sheetPhone.replace(/\s+/g, '').replace(/-/g, '').replace(/^\+94/, '0');
-
-        // අංක දෙක සමානදැයි පරීක්ෂා කිරීම (මුලට 0 නොමැති වුවද ගැලපෙන සේ)
-        if (sheetPhone === phoneInput || sheetPhone.replace(/^0/, '') === phoneInput.replace(/^0/, '')) {
-          foundUrl = row.c[1] ? (row.c[1].g || row.c[1].v) : null;
-          break;
+        // Modal Functions
+        function openModal() {
+            document.getElementById('trackModal').classList.remove('hidden');
         }
-      }
 
-      if (foundUrl) {
-        resultDiv.innerHTML = `
-          <p style="color:green; margin-bottom:10px;">ඔබගේ Document එක සූදානම්!</p>
-          <a href="${foundUrl}" target="_blank" style="display:inline-block; padding:10px 18px; background-color:#28a745; color:white; text-decoration:none; border-radius:5px; font-weight:bold;">Document එක බලන්න</a>
-        `;
-      } else {
-        resultDiv.innerHTML = "<span style='color:red;'>මෙම දුරකථන අංකයට අදාළ Document එකක් හමු නොවුණි.</span>";
-      }
-    } catch (error) {
-      console.error(error);
-      resultDiv.innerHTML = "<span style='color:red;'>දෝෂයක් සිදු විය. පසුව නැවත උත්සාහ කරන්න.</span>";
-    }
-  }
-</script>
+        function closeModal() {
+            document.getElementById('trackModal').classList.add('hidden');
+            document.getElementById('result').innerHTML = '';
+            document.getElementById('jobNoInput').value = '';
+        }
+
+        // Track Document Script
+        async function trackItem() {
+            let phoneInput = document.getElementById('jobNoInput').value.trim();
+            phoneInput = phoneInput.replace(/\s+/g, '').replace(/-/g, '').replace(/^\+94/, '0');
+
+            const resultDiv = document.getElementById('result');
+
+            if (!phoneInput) {
+                resultDiv.innerHTML = "<span class='text-red-500'>කරුණාකර ඔබගේ දුරකථන අංකය ඇතුළත් කරන්න.</span>";
+                return;
+            }
+
+            resultDiv.innerHTML = "<span class='text-gray-500'>සොයමින් පවතී...</span>";
+
+            try {
+                const sheetId = '1DTe6dncmGxaapgTGcmejXJCozCy4KIKYb_YT5xlwMvQ';
+                const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json`;
+
+                const response = await fetch(url);
+                const text = await response.text();
+                
+                const json = JSON.parse(text.substring(47, text.length - 2));
+                const rows = json.table.rows;
+
+                let foundUrl = null;
+
+                for (let row of rows) {
+                    if (!row.c || !row.c[0]) continue;
+
+                    let sheetPhone = String(row.c[0].v || '').trim();
+                    sheetPhone = sheetPhone.replace(/\s+/g, '').replace(/-/g, '').replace(/^\+94/, '0');
+
+                    if (sheetPhone === phoneInput || sheetPhone.replace(/^0/, '') === phoneInput.replace(/^0/, '')) {
+                        foundUrl = row.c[1] ? (row.c[1].g || row.c[1].v) : null;
+                        break;
+                    }
+                }
+
+                if (foundUrl) {
+                    resultDiv.innerHTML = `
+                        <p class="text-green-600 mb-2">ඔබගේ Document එක සූදානම්!</p>
+                        <a href="${foundUrl}" target="_blank" class="inline-block px-5 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-bold transition">Document එක බලන්න</a>
+                    `;
+                } else {
+                    resultDiv.innerHTML = "<span class='text-red-500'>මෙම දුරකථන අංකයට අදාළ Document එකක් හමු නොවුණි.</span>";
+                }
+            } catch (error) {
+                console.error(error);
+                resultDiv.innerHTML = "<span class='text-red-500'>දෝෂයක් සිදු විය. පසුව නැවත උත්සාහ කරන්න.</span>";
+            }
+        }
+    </script>
 </body>
 </html>
