@@ -168,11 +168,20 @@
         <main class="relative w-full min-h-[500px] flex items-start justify-center bg-gray-900 p-6">
             <img src="nnn.jpg" alt="Friendly Editor Service" class="absolute inset-0 w-full h-full object-cover opacity-85">
             
-            <!-- Payment Details Button -->
-            <button onclick="openPaymentModal(event)" class="absolute top-4 left-4 z-20 bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold px-4 py-2 rounded-lg shadow-lg transition duration-200 flex items-center space-x-2 text-xs md:text-sm">
-                <i class="fa-solid fa-credit-card"></i>
-                <span>Payment Details</span>
-            </button>
+            <!-- Left Side Action Buttons Container -->
+            <div class="absolute top-4 left-4 z-20 flex flex-col space-y-2">
+                <!-- Payment Details Button -->
+                <button onclick="openPaymentModal(event)" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold px-4 py-2 rounded-lg shadow-lg transition duration-200 flex items-center space-x-2 text-xs md:text-sm">
+                    <i class="fa-solid fa-credit-card"></i>
+                    <span>Payment Details</span>
+                </button>
+
+                <!-- Self Edit Button -->
+                <button onclick="openSelfEditModal(event)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded-lg shadow-lg transition duration-200 flex items-center space-x-2 text-xs md:text-sm">
+                    <i class="fa-solid fa-sliders"></i>
+                    <span>Self Edit</span>
+                </button>
+            </div>
 
             <!-- Center Welcome Box -->
             <div id="welcome-box" class="relative z-10 text-center text-white px-6 py-4 bg-black/50 rounded-lg backdrop-blur-xs max-w-2xl mx-auto border border-white/20 shadow-lg mt-8 transition-all duration-300">
@@ -203,10 +212,10 @@
             <div class="space-y-3 text-sm text-gray-700">
                 <div class="bg-blue-50 p-3 rounded-lg border border-blue-100">
                     <p class="font-bold text-blue-900">Bank Account Info</p>
-                    <p><span class="font-semibold">Bank:</span> Peoples Bank</p>
-                    <p><span class="font-semibold">Account Name:</span> A.H.G.C. Gunarathna</p>
-                    <p><span class="font-semibold">Account No:</span> 089200200004498</p>
-                    <p><span class="font-semibold">Branch:</span> Katugastota</p>
+                    <p><span class="font-semibold">Bank:</span> Commercial Bank / Peoples Bank</p>
+                    <p><span class="font-semibold">Account Name:</span> Friendly Editor</p>
+                    <p><span class="font-semibold">Account No:</span> XXXX-XXXX-XXXX</p>
+                    <p><span class="font-semibold">Branch:</span> Colombo</p>
                 </div>
                 
                 <p class="text-xs text-gray-500 italic text-center mt-2">
@@ -215,6 +224,71 @@
             </div>
 
             <button onclick="closePaymentModal()" class="w-full mt-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold rounded-lg transition text-sm">Close</button>
+        </div>
+    </div>
+
+    <!-- Self Edit Tools Pop-up Modal -->
+    <div id="selfEditModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+        <div class="bg-white rounded-xl max-w-xl w-full p-6 relative shadow-2xl transform transition-all text-left max-h-[90vh] overflow-y-auto">
+            <button onclick="closeSelfEditModal()" class="absolute right-4 top-3 text-gray-400 hover:text-gray-600 text-2xl font-bold focus:outline-none">&times;</button>
+            
+            <h3 class="text-xl font-bold text-[#002B7F] mb-4 border-b pb-2 text-center">
+                <i class="fa-solid fa-sliders mr-2"></i>Self Edit Tools
+            </h3>
+            
+            <div class="space-y-6">
+                <!-- Convert from PDF Section -->
+                <div>
+                    <h4 class="text-sm font-bold text-gray-700 uppercase tracking-wider mb-3 flex items-center">
+                        <i class="fa-solid fa-file-pdf text-red-600 mr-2 text-lg"></i> Convert from PDF
+                    </h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        <a href="https://www.ilovepdf.com/pdf_to_word" target="_blank" class="flex flex-col items-center justify-center p-3 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg border border-red-200 transition text-xs font-semibold text-center shadow-xs">
+                            <i class="fa-solid fa-file-word text-xl mb-1 text-blue-600"></i>
+                            <span>PDF to Word</span>
+                        </a>
+                        <a href="https://www.ilovepdf.com/pdf_to_jpg" target="_blank" class="flex flex-col items-center justify-center p-3 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg border border-red-200 transition text-xs font-semibold text-center shadow-xs">
+                            <i class="fa-solid fa-file-image text-xl mb-1 text-green-600"></i>
+                            <span>PDF to JPG</span>
+                        </a>
+                        <a href="https://www.ilovepdf.com/pdf_to_excel" target="_blank" class="flex flex-col items-center justify-center p-3 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg border border-red-200 transition text-xs font-semibold text-center shadow-xs">
+                            <i class="fa-solid fa-file-excel text-xl mb-1 text-green-700"></i>
+                            <span>PDF to Excel</span>
+                        </a>
+                        <a href="https://www.ilovepdf.com/pdf_to_powerpoint" target="_blank" class="flex flex-col items-center justify-center p-3 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg border border-red-200 transition text-xs font-semibold text-center shadow-xs">
+                            <i class="fa-solid fa-file-powerpoint text-xl mb-1 text-orange-600"></i>
+                            <span>PDF to PPTX</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Convert to PDF Section -->
+                <div>
+                    <h4 class="text-sm font-bold text-gray-700 uppercase tracking-wider mb-3 flex items-center">
+                        <i class="fa-solid fa-file-export text-blue-600 mr-2 text-lg"></i> Convert to PDF
+                    </h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        <a href="https://www.ilovepdf.com/word_to_pdf" target="_blank" class="flex flex-col items-center justify-center p-3 bg-blue-50 hover:bg-blue-100 text-blue-800 rounded-lg border border-blue-200 transition text-xs font-semibold text-center shadow-xs">
+                            <i class="fa-solid fa-file-word text-xl mb-1 text-blue-600"></i>
+                            <span>Word to PDF</span>
+                        </a>
+                        <a href="https://www.ilovepdf.com/jpg_to_pdf" target="_blank" class="flex flex-col items-center justify-center p-3 bg-blue-50 hover:bg-blue-100 text-blue-800 rounded-lg border border-blue-200 transition text-xs font-semibold text-center shadow-xs">
+                            <i class="fa-solid fa-file-image text-xl mb-1 text-green-600"></i>
+                            <span>JPG to PDF</span>
+                        </a>
+                        <a href="https://www.ilovepdf.com/excel_to_pdf" target="_blank" class="flex flex-col items-center justify-center p-3 bg-blue-50 hover:bg-blue-100 text-blue-800 rounded-lg border border-blue-200 transition text-xs font-semibold text-center shadow-xs">
+                            <i class="fa-solid fa-file-excel text-xl mb-1 text-green-700"></i>
+                            <span>Excel to PDF</span>
+                        </a>
+                        <a href="https://www.ilovepdf.com/powerpoint_to_pdf" target="_blank" class="flex flex-col items-center justify-center p-3 bg-blue-50 hover:bg-blue-100 text-blue-800 rounded-lg border border-blue-200 transition text-xs font-semibold text-center shadow-xs">
+                            <i class="fa-solid fa-file-powerpoint text-xl mb-1 text-orange-600"></i>
+                            <span>PowerPoint to PDF</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="closeSelfEditModal()" class="w-full mt-6 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold rounded-lg transition text-sm">Close</button>
         </div>
     </div>
 
@@ -237,29 +311,27 @@
     <script>
         const welcomeBox = document.getElementById('welcome-box');
 
-        // සියලුම Dropdown Menus (About Us ඇතුළුව) වසා දැමීමේ පොදු Function එක
+        // සියලුම Dropdown Menus වසා දැමීමේ පොදු Function එක
         function closeAllDropdowns() {
             document.querySelectorAll('.dropdown-menu').forEach(menu => {
                 menu.classList.add('hidden');
             });
         }
 
-        // Dropdown එකක් Open/Close කිරීමට
+        // Dropdown Toggle Logic
         function toggleDropdown(e, targetId) {
-            e.stopPropagation(); // Event එක පිටතට යාම නවත්වයි
+            e.stopPropagation();
             const targetMenu = document.getElementById(targetId);
             const isCurrentlyHidden = targetMenu ? targetMenu.classList.contains('hidden') : true;
 
-            // පවතින සියලුම ඩ්‍රොප් ඩවුන්ස් (About Us, Our Services, Contact Us) හයිඩ් කරයි
             closeAllDropdowns();
 
-            // ඔබ ක්ලික් කළ එක පමණක් Toggle කරයි
             if (targetMenu && isCurrentlyHidden) {
                 targetMenu.classList.remove('hidden');
             }
         }
 
-        // Home හෝ Track Your Item ක්ලික් කළ විට සියලුම Dropdowns වසා දැමීම
+        // Navigation Link Clicks
         function handleNavClick(action) {
             closeAllDropdowns();
 
@@ -270,14 +342,12 @@
             }
         }
 
-        // පිටුවේ වෙනත් ඕනෑම ස්ථානයක ක්ලික් කළ විට About Us ඇතුළු සියලුම ඩ්‍රොප් ඩවුන් හයිඩ් වීම
+        // Window Click Listener (Hide dropdowns when clicking outside)
         document.addEventListener('click', (event) => {
-            // ක්ලික් කළේ ඩ්‍රොප් ඩවුන් පැනල් එක ඇතුලේ නෙමේ නම් පමණක් හයිඩ් කරන්න
             if (!event.target.closest('.dropdown-menu')) {
                 closeAllDropdowns();
             }
 
-            // Welcome Box Hide Logic
             const isHomeClick = event.target.closest('a[onclick*="handleNavClick(\'home\')"]');
             if (!isHomeClick && welcomeBox) {
                 welcomeBox.classList.add('hidden');
@@ -303,6 +373,17 @@
 
         function closePaymentModal() {
             document.getElementById('paymentModal').classList.add('hidden');
+        }
+
+        // Self Edit Modal Functions
+        function openSelfEditModal(e) {
+            if (e) e.stopPropagation();
+            closeAllDropdowns();
+            document.getElementById('selfEditModal').classList.remove('hidden');
+        }
+
+        function closeSelfEditModal() {
+            document.getElementById('selfEditModal').classList.add('hidden');
         }
 
         // Track Item Modal Functions
