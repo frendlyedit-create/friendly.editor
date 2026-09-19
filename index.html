@@ -18,6 +18,28 @@
             white-space: nowrap;
             animation: marquee 12s linear infinite;
         }
+
+        /* Star Rating Styles */
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+        .star-rating input {
+            display: none;
+        }
+        .star-rating label {
+            font-size: 1.2rem;
+            color: #cbd5e1; /* Default Gray */
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+            padding: 0 2px;
+        }
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            color: #f59e0b; /* Yellow/Gold on Hover and Checked */
+        }
     </style>
 </head>
 <body class="bg-gray-100 font-sans flex flex-col min-h-screen text-gray-800">
@@ -194,7 +216,21 @@
     </div>
 
     <!-- Footer Section -->
-    <footer class="bg-[#002B7F] text-white py-2 px-6">
+    <footer class="bg-[#002B7F] text-white py-3 px-6 flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0">
+        <!-- Left Side: Page Rating -->
+        <div class="flex items-center space-x-3 text-xs">
+            <span class="opacity-90 font-medium">මෙම පිටුව ගැන ඔබගේ ඇගයීම දක්වන්න:</span>
+            <div class="star-rating">
+                <input type="radio" id="star5" name="rating" value="5" onclick="submitRating(5)"><label for="star5" title="5 stars"><i class="fa-solid fa-star"></i></label>
+                <input type="radio" id="star4" name="rating" value="4" onclick="submitRating(4)"><label for="star4" title="4 stars"><i class="fa-solid fa-star"></i></label>
+                <input type="radio" id="star3" name="rating" value="3" onclick="submitRating(3)"><label for="star3" title="3 stars"><i class="fa-solid fa-star"></i></label>
+                <input type="radio" id="star2" name="rating" value="2" onclick="submitRating(2)"><label for="star2" title="2 stars"><i class="fa-solid fa-star"></i></label>
+                <input type="radio" id="star1" name="rating" value="1" onclick="submitRating(1)"><label for="star1" title="1 star"><i class="fa-solid fa-star"></i></label>
+            </div>
+            <span id="ratingMsg" class="text-green-400 font-semibold text-[11px] hidden">ස්තූතියි!</span>
+        </div>
+
+        <!-- Right Side: Copyright -->
         <p class="text-right text-[11px] opacity-80">
             Copyright&copy; 2026 Friendly Editor All rights reserved
         </p>
@@ -311,6 +347,15 @@
     <script>
         const welcomeBox = document.getElementById('welcome-box');
 
+        // Rating Submit Function
+        function submitRating(stars) {
+            const ratingMsg = document.getElementById('ratingMsg');
+            ratingMsg.classList.remove('hidden');
+            setTimeout(() => {
+                ratingMsg.classList.add('hidden');
+            }, 3000);
+        }
+
         // සියලුම Dropdown Menus වසා දැමීමේ පොදු Function එක
         function closeAllDropdowns() {
             document.querySelectorAll('.dropdown-menu').forEach(menu => {
@@ -342,7 +387,7 @@
             }
         }
 
-        // Window Click Listener (Hide dropdowns when clicking outside)
+        // Window Click Listener
         document.addEventListener('click', (event) => {
             if (!event.target.closest('.dropdown-menu')) {
                 closeAllDropdowns();
