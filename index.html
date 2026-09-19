@@ -3,57 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bio Data Service - Friendly Editor</title>
+    <title>Friendly Editor</title>
     <!-- Tailwind CSS & FontAwesome -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 12s linear infinite;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 font-sans flex flex-col min-h-screen">
 
     <!-- Header Section -->
-    <header class="bg-white py-4 px-6 md:px-12 flex justify-between items-center border-b">
-        <a href="../index.html" class="flex items-center space-x-2">
-            <span class="text-3xl font-extrabold italic tracking-wider text-red-600">FRIENDLY</span>
-            <span class="text-3xl font-black italic tracking-widest text-[#002B7F]">EDITOR</span>
-        </a>
-        <a href="../index.html" class="text-sm font-bold text-[#002B7F] hover:underline">
-            <i class="fa-solid fa-arrow-left mr-1"></i> Back to Home
-        </a>
-    </header>
-
-    <!-- Main Content Area -->
-    <main class="container mx-auto px-6 py-8 flex-grow">
-        <div class="bg-white rounded-xl shadow-md p-6 md:p-8 max-w-4xl mx-auto border border-gray-100">
-            <div class="flex items-center space-x-3 border-b pb-4 mb-6">
-                <i class="fa-solid fa-id-card text-3xl text-[#002B7F]"></i>
-                <h1 class="text-2xl md:text-3xl font-bold text-gray-800">Bio Data Creation Service</h1>
-            </div>
-
-            <p class="text-gray-600 mb-6 leading-relaxed">
-                We design professional, neat, and customized Bio Data for job applications, marriages, and official requirements.
-            </p>
-
-            <div class="bg-blue-50 border-l-4 border-[#002B7F] p-4 rounded mb-6">
-                <h2 class="font-bold text-[#002B7F] mb-1">How to Order?</h2>
-                <p class="text-xs text-gray-700">Send your details directly via WhatsApp, and we will format & print/edit your Bio Data in high quality.</p>
-            </div>
-
-            <!-- WhatsApp Order Button -->
-            <div class="mt-8 text-center">
-                <a href="https://api.whatsapp.com/send?phone=+94751659106&text=Hello!%20I%20need%20a%20Bio%20Data%20service." target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 rounded-full inline-flex items-center space-x-2 shadow-lg transition">
-                    <i class="fa-brands fa-whatsapp text-xl"></i>
-                    <span>Request Bio Data via WhatsApp</span>
+    <header class="bg-white py-4 px-6 md:px-12 flex justify-between items-center border-b overflow-hidden">
+        <div class="flex items-center space-x-4 max-w-xl w-full">
+            <div class="text-left whitespace-nowrap">
+                <a href="index.html">
+                    <span class="text-3xl font-extrabold italic tracking-wider text-red-600">FRIENDLY</span>
+                    <span class="text-3xl font-black italic tracking-widest text-[#002B7F] ml-1">EDITOR</span>
                 </a>
             </div>
+            
+            <!-- Moving Text (Desktop) -->
+            <div class="overflow-hidden w-full hidden sm:block">
+                <div class="animate-marquee text-xs font-semibold italic text-gray-700 tracking-wide">
+                    Your Trusted Partner for Printing &amp; Document Service
+                </div>
+            </div>
         </div>
-    </main>
+    </header>
 
-    <!-- Footer -->
-    <footer class="bg-[#002B7F] text-white py-3 px-6 mt-auto">
-        <p class="text-center text-xs opacity-80">
+    <!-- Mobile Sub-header (Moving Text) -->
+    <div class="bg-gray-200 py-1.5 px-4 text-center sm:hidden border-b overflow-hidden">
+        <div class="animate-marquee text-xs font-semibold italic text-gray-700 tracking-wide">
+            Your Trusted Partner for Printing &amp; Document Service
+        </div>
+    </div>
+
+    <!-- Top Navigation Bar -->
+    <nav class="bg-[#002B7F] text-white shadow-md relative z-30">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menu-btn" class="md:hidden text-white focus:outline-none" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+
+            <!-- Navigation Links -->
+            <div id="menu" class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide items-center">
+                <a href="index.html" class="hover:text-gray-300 transition">Home</a>
+                
+                <!-- About Us Dropdown Trigger -->
+                <div class="relative dropdown-container">
+                    <button class="dropdown-btn hover:text-gray-300 transition flex items-center space-x-1 focus:outline-none" data-target="about-dropdown">
+                        <span>About Us</span>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+                </div>
+
+                <!-- Contact Us Dropdown Trigger -->
+                <div class="relative dropdown-container">
+                    <button class="dropdown-btn hover:text-gray-300 transition flex items-center space-x-1 focus:outline-none" data-target="contact-dropdown">
+                        <span>Contact Us</span>
+                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                    </button>
+
+                    <div id="contact-dropdown" class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-white text-gray-800 rounded-md shadow-xl border border-gray-200 py-2 z-50">
+                        <a href="mailto:friendly.aeditor@gmail.com" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
+                            <i class="fa-solid fa-envelope mr-2 text-red-600 text-sm"></i> friendly.aeditor@gmail.com
+                        </a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
+                            <i class="fa-brands fa-facebook mr-2 text-blue-600 text-sm"></i> Facebook Page
+                        </a>
+                        <a href="https://api.whatsapp.com/send?phone=+94751659106" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900">
+                            <i class="fa-brands fa-whatsapp mr-2 text-green-500 text-sm"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <a href="pages/track-item.html" class="hover:text-gray-300 transition">Track Your Item</a>
+            </div>
+
+            <!-- WhatsApp CTA Button -->
+            <a href="https://api.whatsapp.com/send?phone=+94751659106" target="_blank" rel="noopener noreferrer" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 rounded-full flex items-center space-x-2 text-xs md:text-sm font-bold shadow transition">
+                <i class="fa-brands fa-whatsapp text-lg md:text-xl"></i>
+                <span>Only WhatsApp</span>
+            </a>
+        </div>
+
+        <!-- Desktop About Us Dropdown Panel -->
+        <div id="about-dropdown" class="dropdown-menu hidden absolute left-0 right-0 top-full bg-white text-gray-800 shadow-xl border-t-2 border-red-600 z-40">
+            <div class="container mx-auto p-6 max-w-4xl">
+                <h3 class="text-xl font-bold text-blue-900 mb-2 border-b pb-2">About Friendly Editor</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-3">
+                    Welcome to <strong>Friendly Editor</strong>! We are your premier destination for high-quality printing, typesetting, and document processing services.
+                </p>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#002B7F] px-6 pt-2 pb-4 space-y-2 border-t border-blue-800">
+            <a href="index.html" class="block py-1 hover:text-gray-300">Home</a>
+            <a href="pages/track-item.html" class="block py-1 hover:text-gray-300">Track Your Item</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Layout (Left Sidebar + Main Area) -->
+    <div class="flex-grow flex flex-col md:flex-row w-full">
+        
+        <!-- Left Sidebar Services Navigation Links -->
+        <aside class="w-full md:w-64 bg-white border-r border-gray-200 p-4 flex-shrink-0 shadow-sm">
+            <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 px-2">Our Services</h2>
+            <div class="flex flex-col space-y-2">
+                <a href="pages/bio-data.html" class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-gray-700 bg-gray-50 hover:bg-[#002B7F] hover:text-white transition shadow-sm border border-gray-100">
+                    <i class="fa-solid fa-id-card text-blue-900 w-5"></i>
+                    <span>Bio Data</span>
+                </a>
+                <a href="pages/service-letter.html" class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-gray-700 bg-gray-50 hover:bg-[#002B7F] hover:text-white transition shadow-sm border border-gray-100">
+                    <i class="fa-solid fa-file-contract text-blue-900 w-5"></i>
+                    <span>Service Letter</span>
+                </a>
+                <a href="pages/online-application.html" class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-gray-700 bg-gray-50 hover:bg-[#002B7F] hover:text-white transition shadow-sm border border-gray-100">
+                    <i class="fa-solid fa-laptop-code text-blue-900 w-5"></i>
+                    <span>Any Online Application</span>
+                </a>
+                <a href="pages/photo-editing.html" class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-gray-700 bg-gray-50 hover:bg-[#002B7F] hover:text-white transition shadow-sm border border-gray-100">
+                    <i class="fa-solid fa-image text-blue-900 w-5"></i>
+                    <span>Photo Editing</span>
+                </a>
+                <a href="pages/video-editing.html" class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-gray-700 bg-gray-50 hover:bg-[#002B7F] hover:text-white transition shadow-sm border border-gray-100">
+                    <i class="fa-solid fa-video text-blue-900 w-5"></i>
+                    <span>Video Editing</span>
+                </a>
+                <a href="pages/any-design.html" class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-gray-700 bg-gray-50 hover:bg-[#002B7F] hover:text-white transition shadow-sm border border-gray-100">
+                    <i class="fa-solid fa-pen-ruler text-blue-900 w-5"></i>
+                    <span>Any Design</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Hero Display Area -->
+        <main class="relative flex-grow min-h-[400px] flex items-start justify-center bg-gray-900 p-6">
+            <img src="nnn.jpg" alt="Friendly Editor Service" class="absolute inset-0 w-full h-full object-cover opacity-85">
+            
+            <div class="relative z-10 text-center text-white px-6 py-4 bg-black/50 rounded-lg backdrop-blur-xs max-w-2xl mx-auto border border-white/20 shadow-lg mt-4">
+                <h1 class="text-2xl md:text-3xl font-extrabold drop-shadow-md">Welcome to Friendly Editor</h1>
+                <p class="text-xs md:text-sm font-medium text-gray-100 drop-shadow mt-1">
+                    Your Trusted Partner for Printing &amp; Document Service.
+                </p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-[#002B7F] text-white py-2 px-6">
+        <p class="text-right text-[11px] opacity-80">
             Copyright&copy; 2026 Friendly Editor All rights reserved
         </p>
     </footer>
 
+    <!-- JavaScript Logic -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+
+        dropdownBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const targetId = btn.getAttribute('data-target');
+                const targetMenu = document.getElementById(targetId);
+
+                dropdownMenus.forEach(menu => {
+                    if (menu !== targetMenu) menu.classList.add('hidden');
+                });
+
+                if (targetMenu) {
+                    targetMenu.classList.toggle('hidden');
+                }
+            });
+        });
+
+        window.addEventListener('click', () => {
+            dropdownMenus.forEach(menu => menu.classList.add('hidden'));
+        });
+    </script>
 </body>
 </html>
