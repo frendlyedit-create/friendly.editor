@@ -4,133 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Friendly Editor</title>
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS & FontAwesome -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .custom-blue {
-            background-color: #002B7F;
-        }
-    </style>
 </head>
 <body class="bg-gray-100 font-sans flex flex-col min-h-screen">
 
     <!-- Header Section -->
     <header class="bg-white py-4 px-6 md:px-12 flex justify-between items-center border-b">
-        <!-- Logo & Moving Text -->
         <div class="flex items-center space-x-4 max-w-xl">
             <div class="text-left whitespace-nowrap">
-                <div class="text-3xl font-extrabold italic tracking-wider text-red-600 inline-block">FRIENDLY</div>
-                <div class="text-3xl font-black italic tracking-widest text-blue-900 inline-block ml-1">EDITOR</div>
+                <span class="text-3xl font-extrabold italic tracking-wider text-red-600">FRIENDLY</span>
+                <span class="text-3xl font-black italic tracking-widest text-[#002B7F] ml-1">EDITOR</span>
             </div>
-            
-            <!-- Moving Text (Desktop - Right to Left) -->
             <div class="overflow-hidden w-full hidden sm:block">
-                <marquee direction="left" scrollamount="5" class="text-xs font-semibold italic text-gray-700 tracking-wide block">
-                    Your Trusted Partner for Printing & Document Service
-                </marquee>
+                <p class="text-xs font-semibold italic text-gray-700 tracking-wide">
+                    Your Trusted Partner for Printing &amp; Document Service
+                </p>
             </div>
-        </div>
-            </a>
         </div>
     </header>
 
-    <!-- Mobile Sub-header (Moving Text - Right to Left) -->
-    <div class="bg-gray-200 py-1.5 px-4 text-center sm:hidden border-b overflow-hidden">
-        <marquee direction="left" scrollamount="5" class="text-xs font-semibold italic text-gray-700 tracking-wide block">
-            Your Trusted Partner for Printing & Document Service
-        </marquee>
+    <!-- Mobile Sub-header -->
+    <div class="bg-gray-200 py-1.5 px-4 text-center sm:hidden border-b">
+        <p class="text-xs font-semibold italic text-gray-700 tracking-wide">
+            Your Trusted Partner for Printing &amp; Document Service
+        </p>
     </div>
 
     <!-- Navigation Bar -->
-    <nav class="custom-blue text-white shadow-md relative z-30">
+    <nav class="bg-[#002B7F] text-white shadow-md relative z-30">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             
-            <!-- Mobile Menu Button -->
+            <!-- Mobile Menu Toggle Button -->
             <button id="menu-btn" class="md:hidden text-white focus:outline-none" aria-label="Toggle Navigation">
                 <i class="fa-solid fa-bars text-2xl"></i>
             </button>
 
             <!-- Navigation Links -->
             <div id="menu" class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide items-center">
-                <a href="#" class="hover:text-gray-300 transition duration-150">Home</a>
+                <a href="#" class="hover:text-gray-300 transition">Home</a>
                 
                 <!-- About Us Dropdown Trigger -->
-                <div class="relative">
-                    <button id="about-btn" class="hover:text-gray-300 transition duration-150 flex items-center space-x-1 focus:outline-none">
+                <div class="relative dropdown-container">
+                    <button class="dropdown-btn hover:text-gray-300 transition flex items-center space-x-1 focus:outline-none" data-target="about-dropdown">
                         <span>About Us</span>
                         <i class="fa-solid fa-chevron-down text-xs"></i>
                     </button>
                 </div>
 
                 <!-- Special Job Dropdown Trigger -->
-                <div class="relative">
-                    <button id="special-job-btn" class="hover:text-gray-300 transition duration-150 flex items-center space-x-1 focus:outline-none">
+                <div class="relative dropdown-container">
+                    <button class="dropdown-btn hover:text-gray-300 transition flex items-center space-x-1 focus:outline-none" data-target="special-dropdown">
                         <span>Special Job</span>
                         <i class="fa-solid fa-chevron-down text-xs"></i>
                     </button>
 
-                    <!-- Special Job Dropdown Menu -->
-                    <div id="special-job-dropdown" class="hidden absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-xl border border-gray-200 py-2 z-50">
-                        <a href="#" class="block px-4 py-2 text-sm font-semibold hover:bg-blue-50 hover:text-blue-900 transition duration-150 border-b border-gray-100">
+                    <div id="special-dropdown" class="dropdown-menu hidden absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-xl border border-gray-200 py-2 z-50">
+                        <a href="#" class="block px-4 py-2 text-sm font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
                             <i class="fa-solid fa-id-card mr-2 text-blue-900"></i> BIO DATA
                         </a>
-                        <a href="#" class="block px-4 py-2 text-sm font-semibold hover:bg-blue-50 hover:text-blue-900 transition duration-150 border-b border-gray-100">
+                        <a href="#" class="block px-4 py-2 text-sm font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
                             <i class="fa-solid fa-file-contract mr-2 text-blue-900"></i> SERVICE LETTER
                         </a>
-                        <a href="#" class="block px-4 py-2 text-sm font-semibold hover:bg-blue-50 hover:text-blue-900 transition duration-150">
+                        <a href="#" class="block px-4 py-2 text-sm font-semibold hover:bg-blue-50 hover:text-blue-900">
                             <i class="fa-solid fa-laptop-code mr-2 text-blue-900"></i> ONLINE APPLICATION
                         </a>
                     </div>
                 </div>
 
                 <!-- Contact Us Dropdown Trigger -->
-                <div class="relative">
-                    <button id="contact-btn" class="hover:text-gray-300 transition duration-150 flex items-center space-x-1 focus:outline-none">
+                <div class="relative dropdown-container">
+                    <button class="dropdown-btn hover:text-gray-300 transition flex items-center space-x-1 focus:outline-none" data-target="contact-dropdown">
                         <span>Contact Us</span>
                         <i class="fa-solid fa-chevron-down text-xs"></i>
                     </button>
 
-                    <!-- Contact Us Dropdown Menu -->
-                    <div id="contact-dropdown" class="hidden absolute left-0 mt-2 w-64 bg-white text-gray-800 rounded-md shadow-xl border border-gray-200 py-2 z-50">
-                        <!-- Email Link -->
-                        <a href="mailto:friendly.aeditor@gmail.com" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 transition duration-150 border-b border-gray-100">
+                    <div id="contact-dropdown" class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-white text-gray-800 rounded-md shadow-xl border border-gray-200 py-2 z-50">
+                        <a href="mailto:friendly.aeditor@gmail.com" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
                             <i class="fa-solid fa-envelope mr-2 text-red-600 text-sm"></i> friendly.aeditor@gmail.com
                         </a>
-                        <!-- Facebook Link -->
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 transition duration-150 border-b border-gray-100">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
                             <i class="fa-brands fa-facebook mr-2 text-blue-600 text-sm"></i> Facebook Page
                         </a>
-                        <!-- WhatsApp Link (Fixed API Link) -->
-                        <a href="https://api.whatsapp.com/send?phone=+94751659106" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 transition duration-150">
+                        <a href="https://api.whatsapp.com/send?phone=+94751659106" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900">
                             <i class="fa-brands fa-whatsapp mr-2 text-green-500 text-sm"></i> WhatsApp
                         </a>
                     </div>
                 </div>
 
-                <a href="#" class="hover:text-gray-300 transition duration-150">Track Your Item</a>
+                <a href="#" class="hover:text-gray-300 transition">Track Your Item</a>
             </div>
 
-            <!-- Header Right WhatsApp Button (Fixed API Link) -->
-            <div class="flex items-center">
-                <a href="https://api.whatsapp.com/send?phone=+94751659106" target="_blank" rel="noopener noreferrer" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 rounded-full flex items-center space-x-2 text-xs md:text-sm font-bold shadow transition duration-200">
-                    <i class="fa-brands fa-whatsapp text-lg md:text-xl"></i>
-                    <span>Only WhatsApp</span>
-                </a>
-            </div>
+            <!-- WhatsApp CTA Button -->
+            <a href="https://api.whatsapp.com/send?phone=+94751659106" target="_blank" rel="noopener noreferrer" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 rounded-full flex items-center space-x-2 text-xs md:text-sm font-bold shadow transition">
+                <i class="fa-brands fa-whatsapp text-lg md:text-xl"></i>
+                <span>Only WhatsApp</span>
+            </a>
         </div>
 
         <!-- Desktop About Us Dropdown Panel -->
-        <div id="about-dropdown" class="hidden absolute left-0 right-0 top-full bg-white text-gray-800 shadow-xl border-t-2 border-red-600 transition-all duration-300 z-40">
+        <div id="about-dropdown" class="dropdown-menu hidden absolute left-0 right-0 top-full bg-white text-gray-800 shadow-xl border-t-2 border-red-600 z-40">
             <div class="container mx-auto p-6 max-w-4xl">
                 <h3 class="text-xl font-bold text-blue-900 mb-2 border-b pb-2">About Friendly Editor</h3>
                 <p class="text-sm text-gray-600 leading-relaxed mb-3">
-                    Welcome to <strong>Friendly Editor</strong>! We are your premier destination for high-quality printing, typesetting, and document processing services. Our mission is to provide fast, reliable, and professional solutions tailored to meet all your personal and business documentation needs.
+                    Welcome to <strong>Friendly Editor</strong>! We are your premier destination for high-quality printing, typesetting, and document processing services.
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs mt-4 bg-blue-50 p-3 rounded-lg border border-blue-100">
                     <div>
-                        <strong class="text-blue-900 block mb-1">🖨️ Printing & Copying</strong>
+                        <strong class="text-blue-900 block mb-1">🖨️ Printing &amp; Copying</strong>
                         <span>High-quality document printing and copying with precision.</span>
                     </div>
                     <div>
@@ -145,86 +127,36 @@
             </div>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden custom-blue px-6 pt-2 pb-4 space-y-2 border-t border-blue-800">
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#002B7F] px-6 pt-2 pb-4 space-y-2 border-t border-blue-800">
             <a href="#" class="block py-1 hover:text-gray-300">Home</a>
-            
-            <!-- Mobile About Us Dropdown -->
-            <div>
-                <button id="mobile-about-btn" class="w-full text-left py-1 hover:text-gray-300 flex justify-between items-center focus:outline-none">
-                    <span>About Us</span>
-                    <i class="fa-solid fa-chevron-down text-xs"></i>
-                </button>
-                <div id="mobile-about-content" class="hidden bg-blue-900 p-3 rounded text-xs space-y-2 my-1 text-gray-200">
-                    <p>Welcome to <strong>Friendly Editor</strong>! We specialize in high-quality printing, typesetting, and document services.</p>
-                    <p>Our goal is fast, reliable, and professional service for all your documentation needs.</p>
-                </div>
-            </div>
-
-            <!-- Mobile Special Job Dropdown -->
-            <div>
-                <button id="mobile-special-btn" class="w-full text-left py-1 hover:text-gray-300 flex justify-between items-center focus:outline-none">
-                    <span>Special Job</span>
-                    <i class="fa-solid fa-chevron-down text-xs"></i>
-                </button>
-                <div id="mobile-special-content" class="hidden bg-blue-900 p-2 rounded text-xs space-y-2 my-1 text-gray-200 pl-4">
-                    <a href="#" class="block py-1 hover:text-white"><i class="fa-solid fa-id-card mr-2"></i> BIO DATA</a>
-                    <a href="#" class="block py-1 hover:text-white"><i class="fa-solid fa-file-contract mr-2"></i> SERVICE LETTER</a>
-                    <a href="#" class="block py-1 hover:text-white"><i class="fa-solid fa-laptop-code mr-2"></i> ONLINE APPLICATION</a>
-                </div>
-            </div>
-
             <a href="#" class="block py-1 hover:text-gray-300">Branch Network</a>
-
-            <!-- Mobile Contact Us Dropdown -->
-            <div>
-                <button id="mobile-contact-btn" class="w-full text-left py-1 hover:text-gray-300 flex justify-between items-center focus:outline-none">
-                    <span>Contact Us</span>
-                    <i class="fa-solid fa-chevron-down text-xs"></i>
-                </button>
-
-                <div id="mobile-contact-content" class="hidden bg-blue-900 p-2 rounded text-xs space-y-2 my-1 text-gray-200 pl-4">
-                    <a href="mailto:friendly.aeditor@gmail.com" class="block py-1 hover:text-white">
-                        <i class="fa-solid fa-envelope mr-2 text-red-400"></i> friendly.aeditor@gmail.com
-                    </a>
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="block py-1 hover:text-white">
-                        <i class="fa-brands fa-facebook mr-2 text-blue-400"></i> Facebook Page
-                    </a>
-                    <!-- Mobile WhatsApp Link (Fixed API Link) -->
-                    <a href="https://api.whatsapp.com/send?phone=+94751659106" target="_blank" rel="noopener noreferrer" class="block py-1 hover:text-white">
-                        <i class="fa-brands fa-whatsapp mr-2 text-green-400"></i> WhatsApp
-                    </a>
-                </div>
-            </div>
-
             <a href="#" class="block py-1 hover:text-gray-300">Track Your Item</a>
         </div>
     </nav>
 
-    <!-- Full Width Image Section -->
+    <!-- Main Hero Section -->
     <main class="relative flex-grow w-full flex items-start justify-center bg-gray-900 pt-4">
-        <!-- Background Image -->
         <img src="nnn.jpg" alt="Friendly Editor Service" class="absolute inset-0 w-full h-full object-cover opacity-85">
         
-        <!-- Text Overlay -->
         <div class="relative z-10 text-center text-white px-6 py-3 bg-black/50 rounded-lg backdrop-blur-xs max-w-2xl mx-auto border border-white/20 shadow-lg">
             <h1 class="text-2xl md:text-3xl font-extrabold drop-shadow-md">Welcome to Friendly Editor</h1>
             <p class="text-xs md:text-sm font-medium text-gray-100 drop-shadow mt-1">
-                Your Trusted Partner for Printing & Document Service.
+                Your Trusted Partner for Printing &amp; Document Service.
             </p>
         </div>
     </main>
 
     <!-- Footer Section -->
-    <footer class="custom-blue text-white py-2 px-6">
+    <footer class="bg-[#002B7F] text-white py-2 px-6">
         <p class="text-right text-[11px] opacity-80">
-            Copyright© 2026 Friendly Editor All rights reserved
+            Copyright&copy; 2026 Friendly Editor All rights reserved
         </p>
     </footer>
 
-    <!-- JavaScript logic -->
+    <!-- Optimized JavaScript -->
     <script>
-        // Mobile Menu Toggle
+        // Mobile Navigation Toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -232,72 +164,29 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Desktop About Us Dropdown
-        const aboutBtn = document.getElementById('about-btn');
-        const aboutDropdown = document.getElementById('about-dropdown');
+        // Unified Dropdown Toggle Logic
+        const dropdownBtns = document.querySelectorAll('.dropdown-btn');
+        const dropdownMenus = document.querySelectorAll('.dropdown-menu');
 
-        // Desktop Special Job Dropdown
-        const specialJobBtn = document.getElementById('special-job-btn');
-        const specialJobDropdown = document.getElementById('special-job-dropdown');
+        dropdownBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const targetId = btn.getAttribute('data-target');
+                const targetMenu = document.getElementById(targetId);
 
-        // Desktop Contact Us Dropdown
-        const contactBtn = document.getElementById('contact-btn');
-        const contactDropdown = document.getElementById('contact-dropdown');
+                dropdownMenus.forEach(menu => {
+                    if (menu !== targetMenu) menu.classList.add('hidden');
+                });
 
-        aboutBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            specialJobDropdown.classList.add('hidden');
-            contactDropdown.classList.add('hidden');
-            aboutDropdown.classList.toggle('hidden');
+                if (targetMenu) {
+                    targetMenu.classList.toggle('hidden');
+                }
+            });
         });
 
-        specialJobBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            aboutDropdown.classList.add('hidden');
-            contactDropdown.classList.add('hidden');
-            specialJobDropdown.classList.toggle('hidden');
-        });
-
-        contactBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            aboutDropdown.classList.add('hidden');
-            specialJobDropdown.classList.add('hidden');
-            contactDropdown.classList.toggle('hidden');
-        });
-
-        // Mobile Toggles
-        const mobileAboutBtn = document.getElementById('mobile-about-btn');
-        const mobileAboutContent = document.getElementById('mobile-about-content');
-
-        const mobileSpecialBtn = document.getElementById('mobile-special-btn');
-        const mobileSpecialContent = document.getElementById('mobile-special-content');
-
-        const mobileContactBtn = document.getElementById('mobile-contact-btn');
-        const mobileContactContent = document.getElementById('mobile-contact-content');
-
-        mobileAboutBtn.addEventListener('click', () => {
-            mobileAboutContent.classList.toggle('hidden');
-        });
-
-        mobileSpecialBtn.addEventListener('click', () => {
-            mobileSpecialContent.classList.toggle('hidden');
-        });
-
-        mobileContactBtn.addEventListener('click', () => {
-            mobileContactContent.classList.toggle('hidden');
-        });
-
-        // Close Dropdowns when clicking outside
-        window.addEventListener('click', (e) => {
-            if (!aboutDropdown.contains(e.target) && !aboutBtn.contains(e.target)) {
-                aboutDropdown.classList.add('hidden');
-            }
-            if (!specialJobDropdown.contains(e.target) && !specialJobBtn.contains(e.target)) {
-                specialJobDropdown.classList.add('hidden');
-            }
-            if (!contactDropdown.contains(e.target) && !contactBtn.contains(e.target)) {
-                contactDropdown.classList.add('hidden');
-            }
+        // Close dropdowns when clicking outside
+        window.addEventListener('click', () => {
+            dropdownMenus.forEach(menu => menu.classList.add('hidden'));
         });
     </script>
 </body>
