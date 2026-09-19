@@ -167,6 +167,13 @@
         <main class="relative w-full min-h-[500px] flex items-start justify-center bg-gray-900 p-6">
             <img src="nnn.jpg" alt="Friendly Editor Service" class="absolute inset-0 w-full h-full object-cover opacity-85">
             
+            <!-- Payment Details Button (උඩ වම් කෙළවරේ) -->
+            <button onclick="openPaymentModal()" class="absolute top-4 left-4 z-20 bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold px-4 py-2 rounded-lg shadow-lg transition duration-200 flex items-center space-x-2 text-xs md:text-sm">
+                <i class="fa-solid fa-credit-card"></i>
+                <span>Payment Details</span>
+            </button>
+
+            <!-- Center Welcome Box -->
             <div class="relative z-10 text-center text-white px-6 py-4 bg-black/50 rounded-lg backdrop-blur-xs max-w-2xl mx-auto border border-white/20 shadow-lg mt-8">
                 <h1 class="text-2xl md:text-3xl font-extrabold drop-shadow-md">Welcome to Friendly Editor</h1>
                 <p class="text-xs md:text-sm font-medium text-gray-100 drop-shadow mt-1">
@@ -182,6 +189,33 @@
             Copyright&copy; 2026 Friendly Editor All rights reserved
         </p>
     </footer>
+
+    <!-- Payment Details Pop-up Modal -->
+    <div id="paymentModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+        <div class="bg-white rounded-xl max-w-md w-full p-6 relative shadow-2xl transform transition-all text-left">
+            <button onclick="closePaymentModal()" class="absolute right-4 top-3 text-gray-400 hover:text-gray-600 text-2xl font-bold focus:outline-none">&times;</button>
+            
+            <h3 class="text-xl font-bold text-[#002B7F] mb-4 border-b pb-2 text-center">
+                <i class="fa-solid fa-building-columns mr-2"></i>Payment Details
+            </h3>
+            
+            <div class="space-y-3 text-sm text-gray-700">
+                <div class="bg-blue-50 p-3 rounded-lg border border-blue-100">
+                    <p class="font-bold text-blue-900">Bank Account Info</p>
+                    <p><span class="font-semibold">Bank:</span> Commercial Bank / Peoples Bank</p>
+                    <p><span class="font-semibold">Account Name:</span> Friendly Editor</p>
+                    <p><span class="font-semibold">Account No:</span> XXXX-XXXX-XXXX</p>
+                    <p><span class="font-semibold">Branch:</span> Colombo</p>
+                </div>
+                
+                <p class="text-xs text-gray-500 italic text-center mt-2">
+                    මුදල් ගෙවූ පසු රිසිට්පත WhatsApp හරහා අප වෙත යොමු කරන්න.
+                </p>
+            </div>
+
+            <button onclick="closePaymentModal()" class="w-full mt-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold rounded-lg transition text-sm">Close</button>
+        </div>
+    </div>
 
     <!-- Track Your Item Pop-up Modal -->
     <div id="trackModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
@@ -235,7 +269,16 @@
             });
         });
 
-        // Modal Functions
+        // Payment Modal Functions
+        function openPaymentModal() {
+            document.getElementById('paymentModal').classList.remove('hidden');
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').classList.add('hidden');
+        }
+
+        // Track Item Modal Functions
         function openModal() {
             document.getElementById('trackModal').classList.remove('hidden');
         }
