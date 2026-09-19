@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* දකුණේ සිට වමට යන Marquee Animation එක */
         @keyframes marquee {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
@@ -47,7 +46,7 @@
         </div>
     </div>
 
-    <!-- Navigation Bar -->
+    <!-- Top Navigation Bar -->
     <nav class="bg-[#002B7F] text-white shadow-md relative z-30">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             
@@ -66,26 +65,6 @@
                         <span>About Us</span>
                         <i class="fa-solid fa-chevron-down text-xs"></i>
                     </button>
-                </div>
-
-                <!-- Special Job Dropdown Trigger -->
-                <div class="relative dropdown-container">
-                    <button class="dropdown-btn hover:text-gray-300 transition flex items-center space-x-1 focus:outline-none" data-target="special-dropdown">
-                        <span>Special Job</span>
-                        <i class="fa-solid fa-chevron-down text-xs"></i>
-                    </button>
-
-                    <div id="special-dropdown" class="dropdown-menu hidden absolute left-0 mt-2 w-48 bg-white text-gray-800 rounded-md shadow-xl border border-gray-200 py-2 z-50">
-                        <a href="#" class="block px-4 py-2 text-sm font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
-                            <i class="fa-solid fa-id-card mr-2 text-blue-900"></i> BIO DATA
-                        </a>
-                        <a href="#" class="block px-4 py-2 text-sm font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
-                            <i class="fa-solid fa-file-contract mr-2 text-blue-900"></i> SERVICE LETTER
-                        </a>
-                        <a href="#" class="block px-4 py-2 text-sm font-semibold hover:bg-blue-50 hover:text-blue-900">
-                            <i class="fa-solid fa-laptop-code mr-2 text-blue-900"></i> ONLINE APPLICATION
-                        </a>
-                    </div>
                 </div>
 
                 <!-- Contact Us Dropdown Trigger -->
@@ -125,20 +104,6 @@
                 <p class="text-sm text-gray-600 leading-relaxed mb-3">
                     Welcome to <strong>Friendly Editor</strong>! We are your premier destination for high-quality printing, typesetting, and document processing services.
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs mt-4 bg-blue-50 p-3 rounded-lg border border-blue-100">
-                    <div>
-                        <strong class="text-blue-900 block mb-1">🖨️ Printing &amp; Copying</strong>
-                        <span>High-quality document printing and copying with precision.</span>
-                    </div>
-                    <div>
-                        <strong class="text-blue-900 block mb-1">✍️ Document Design</strong>
-                        <span>Professional layout design, editing, and document formatting.</span>
-                    </div>
-                    <div>
-                        <strong class="text-blue-900 block mb-1">⚡ Fast Delivery</strong>
-                        <span>Quick service delivery and hassle-free online order processing.</span>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -150,17 +115,52 @@
         </div>
     </nav>
 
-    <!-- Main Hero Section -->
-    <main class="relative flex-grow w-full flex items-start justify-center bg-gray-900 pt-4">
-        <img src="nnn.jpg" alt="Friendly Editor Service" class="absolute inset-0 w-full h-full object-cover opacity-85">
+    <!-- Main Content Layout (Left Sidebar + Main Area) -->
+    <div class="flex-grow flex flex-col md:flex-row w-full">
         
-        <div class="relative z-10 text-center text-white px-6 py-3 bg-black/50 rounded-lg backdrop-blur-xs max-w-2xl mx-auto border border-white/20 shadow-lg">
-            <h1 class="text-2xl md:text-3xl font-extrabold drop-shadow-md">Welcome to Friendly Editor</h1>
-            <p class="text-xs md:text-sm font-medium text-gray-100 drop-shadow mt-1">
-                Your Trusted Partner for Printing &amp; Document Service.
-            </p>
-        </div>
-    </main>
+        <!-- Left Sidebar Services Navigation -->
+        <aside class="w-full md:w-64 bg-white border-r border-gray-200 p-4 flex-shrink-0 shadow-sm">
+            <h2 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 px-2">Our Services</h2>
+            <div class="flex flex-col space-y-2">
+                <a href="#" class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-gray-700 bg-gray-50 hover:bg-[#002B7F] hover:text-white transition shadow-sm border border-gray-100">
+                    <i class="fa-solid fa-id-card text-blue-900 w-5"></i>
+                    <span>Bio Data</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-gray-700 bg-gray-50 hover:bg-[#002B7F] hover:text-white transition shadow-sm border border-gray-100">
+                    <i class="fa-solid fa-file-contract text-blue-900 w-5"></i>
+                    <span>Service Letter</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-gray-700 bg-gray-50 hover:bg-[#002B7F] hover:text-white transition shadow-sm border border-gray-100">
+                    <i class="fa-solid fa-laptop-code text-blue-900 w-5"></i>
+                    <span>Any Online Application</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-gray-700 bg-gray-50 hover:bg-[#002B7F] hover:text-white transition shadow-sm border border-gray-100">
+                    <i class="fa-solid fa-image text-blue-900 w-5"></i>
+                    <span>Photo Editing</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-gray-700 bg-gray-50 hover:bg-[#002B7F] hover:text-white transition shadow-sm border border-gray-100">
+                    <i class="fa-solid fa-video text-blue-900 w-5"></i>
+                    <span>Video Editing</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-2.5 rounded-lg text-sm font-semibold text-gray-700 bg-gray-50 hover:bg-[#002B7F] hover:text-white transition shadow-sm border border-gray-100">
+                    <i class="fa-solid fa-pen-ruler text-blue-900 w-5"></i>
+                    <span>Any Design</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Hero Display Area -->
+        <main class="relative flex-grow min-h-[400px] flex items-start justify-center bg-gray-900 p-6">
+            <img src="nnn.jpg" alt="Friendly Editor Service" class="absolute inset-0 w-full h-full object-cover opacity-85">
+            
+            <div class="relative z-10 text-center text-white px-6 py-4 bg-black/50 rounded-lg backdrop-blur-xs max-w-2xl mx-auto border border-white/20 shadow-lg mt-4">
+                <h1 class="text-2xl md:text-3xl font-extrabold drop-shadow-md">Welcome to Friendly Editor</h1>
+                <p class="text-xs md:text-sm font-medium text-gray-100 drop-shadow mt-1">
+                    Your Trusted Partner for Printing &amp; Document Service.
+                </p>
+            </div>
+        </main>
+    </div>
 
     <!-- Footer Section -->
     <footer class="bg-[#002B7F] text-white py-2 px-6">
