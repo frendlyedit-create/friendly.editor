@@ -237,29 +237,29 @@
     <script>
         const welcomeBox = document.getElementById('welcome-box');
 
-        // සියලුම Dropdown Menus වසා දැමීමට සාදන ලද Function එක
+        // සියලුම Dropdown Menus (About Us ඇතුළුව) වසා දැමීමේ පොදු Function එක
         function closeAllDropdowns() {
             document.querySelectorAll('.dropdown-menu').forEach(menu => {
                 menu.classList.add('hidden');
             });
         }
 
-        // Dropdown Toggle Logic (එකක් Open කරන විට අනික්වා Hide වේ)
+        // Dropdown එකක් Open/Close කිරීමට
         function toggleDropdown(e, targetId) {
-            e.stopPropagation();
+            e.stopPropagation(); // Event එක පිටතට යාම නවත්වයි
             const targetMenu = document.getElementById(targetId);
             const isCurrentlyHidden = targetMenu ? targetMenu.classList.contains('hidden') : true;
 
-            // මුලින්ම සියලුම Dropdowns Hide කරයි
+            // පවතින සියලුම ඩ්‍රොප් ඩවුන්ස් (About Us, Our Services, Contact Us) හයිඩ් කරයි
             closeAllDropdowns();
 
-            // Click කළ Menu එක කලින් Hide වී තිබුණි නම් එය පමණක් Open කරයි
+            // ඔබ ක්ලික් කළ එක පමණක් Toggle කරයි
             if (targetMenu && isCurrentlyHidden) {
                 targetMenu.classList.remove('hidden');
             }
         }
 
-        // Navigation Items (Home, Track Your Item) ක්ලික් කිරීමේදී Dropdown හයිඩ් කිරීම
+        // Home හෝ Track Your Item ක්ලික් කළ විට සියලුම Dropdowns වසා දැමීම
         function handleNavClick(action) {
             closeAllDropdowns();
 
@@ -270,10 +270,14 @@
             }
         }
 
-        // Page එකේ වෙනත් ඕනෑම තැනක් ක්ලික් කළ විට සියලුම Dropdowns සහ Welcome Box Hide කිරීම
+        // පිටුවේ වෙනත් ඕනෑම ස්ථානයක ක්ලික් කළ විට About Us ඇතුළු සියලුම ඩ්‍රොප් ඩවුන් හයිඩ් වීම
         document.addEventListener('click', (event) => {
-            closeAllDropdowns();
+            // ක්ලික් කළේ ඩ්‍රොප් ඩවුන් පැනල් එක ඇතුලේ නෙමේ නම් පමණක් හයිඩ් කරන්න
+            if (!event.target.closest('.dropdown-menu')) {
+                closeAllDropdowns();
+            }
 
+            // Welcome Box Hide Logic
             const isHomeClick = event.target.closest('a[onclick*="handleNavClick(\'home\')"]');
             if (!isHomeClick && welcomeBox) {
                 welcomeBox.classList.add('hidden');
