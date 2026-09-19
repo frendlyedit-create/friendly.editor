@@ -205,8 +205,8 @@
                 </button>
             </div>
 
-            <!-- Center Welcome Box -->
-            <div id="welcome-box" class="relative z-10 text-center text-white px-6 py-4 bg-black/50 rounded-lg backdrop-blur-xs max-w-2xl mx-auto border border-white/20 shadow-lg mt-8 transition-all duration-300">
+            <!-- Center Welcome Box (Hidden by Default until Checked) -->
+            <div id="welcome-box" class="hidden relative z-10 text-center text-white px-6 py-4 bg-black/50 rounded-lg backdrop-blur-xs max-w-2xl mx-auto border border-white/20 shadow-lg mt-8 transition-all duration-500">
                 <h1 class="text-2xl md:text-3xl font-extrabold drop-shadow-md">Welcome to Friendly Editor</h1>
                 <p class="text-xs md:text-sm font-medium text-gray-100 drop-shadow mt-1">
                     Your Trusted Partner for Printing &amp; Document Service.
@@ -347,6 +347,23 @@
     <script>
         const welcomeBox = document.getElementById('welcome-box');
 
+        // පිටුව Load වන විට Welcome Box එක පළමු වරට පමණක් පෙන්වීමට අදාළ Script එක
+        document.addEventListener('DOMContentLoaded', () => {
+            const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
+
+            if (!hasSeenWelcome) {
+                // පළමු වර නම් Welcome Box එක පෙන්වන්න
+                welcomeBox.classList.remove('hidden');
+
+                // තත්පර 7කින් (milliseconds 7000) පසු අතුරුදහන් කරන්න
+                setTimeout(() => {
+                    welcomeBox.classList.add('hidden');
+                    // ඊළඟ වතාවේදී නොපෙන්වීමට localStorage එකේ සටහන් තබන්න
+                    localStorage.setItem('hasSeenWelcome', 'true');
+                }, 7000);
+            }
+        });
+
         // Rating Submit Function
         function submitRating(stars) {
             const ratingMsg = document.getElementById('ratingMsg');
@@ -381,7 +398,7 @@
             closeAllDropdowns();
 
             if (action === 'home') {
-                if (welcomeBox) welcomeBox.classList.remove('hidden');
+                // Home ක්ලික් කළ විටද welcomeBox අලුතින් නොපෙන්වීමට
             } else if (action === 'track') {
                 openModal();
             }
@@ -391,11 +408,6 @@
         document.addEventListener('click', (event) => {
             if (!event.target.closest('.dropdown-menu')) {
                 closeAllDropdowns();
-            }
-
-            const isHomeClick = event.target.closest('a[onclick*="handleNavClick(\'home\')"]');
-            if (!isHomeClick && welcomeBox) {
-                welcomeBox.classList.add('hidden');
             }
         });
 
