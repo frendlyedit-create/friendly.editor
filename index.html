@@ -26,7 +26,7 @@
     <header class="bg-white py-4 px-6 md:px-12 flex justify-between items-center border-b overflow-hidden">
         <div class="flex items-center space-x-4 max-w-xl w-full">
             <div class="text-left whitespace-nowrap">
-                <a href="index.html">
+                <a href="javascript:void(0)" onclick="showWelcomeBox()">
                     <span class="text-3xl font-extrabold italic tracking-wider text-red-600">FRIENDLY</span>
                     <span class="text-3xl font-black italic tracking-widest text-[#002B7F] ml-1">EDITOR</span>
                 </a>
@@ -59,7 +59,8 @@
 
             <!-- Navigation Links (Desktop) -->
             <div id="menu" class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide items-center">
-                <a href="index.html" class="hover:text-gray-300 transition">Home</a>
+                <!-- Home Button: Welcome Box එක නැවත පෙන්වීමට function එකක් call වේ -->
+                <a href="javascript:void(0)" onclick="showWelcomeBox()" class="hover:text-gray-300 transition">Home</a>
                 
                 <!-- About Us Dropdown Trigger -->
                 <div class="relative dropdown-container">
@@ -140,10 +141,9 @@
 
         <!-- Mobile Navigation Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-[#002B7F] px-6 pt-2 pb-4 space-y-2 border-t border-blue-800">
-            <a href="index.html" class="block py-1 hover:text-gray-300 border-b border-blue-900/50">Home</a>
+            <a href="javascript:void(0)" onclick="showWelcomeBox()" class="block py-1 hover:text-gray-300 border-b border-blue-900/50">Home</a>
             <a href="javascript:void(0)" onclick="openModal()" class="block py-1 hover:text-gray-300 border-b border-blue-900/50">Track Your Item</a>
             
-            <!-- Mobile Our Services Items -->
             <div class="pt-2 text-xs text-blue-200 uppercase tracking-wider">Our Services</div>
             <a href="./pages/bio-data.html" class="block py-1 text-xs hover:text-gray-300 pl-2">• Bio Data</a>
             <a href="./pages/service-letter.html" class="block py-1 text-xs hover:text-gray-300 pl-2">• Service Letter</a>
@@ -162,19 +162,19 @@
         </div>
     </nav>
 
-    <!-- Main Content Layout (Full Width Hero Section) -->
+    <!-- Main Content Layout -->
     <div class="flex-grow w-full">
         <main class="relative w-full min-h-[500px] flex items-start justify-center bg-gray-900 p-6">
             <img src="nnn.jpg" alt="Friendly Editor Service" class="absolute inset-0 w-full h-full object-cover opacity-85">
             
-            <!-- Payment Details Button (උඩ වම් කෙළවරේ) -->
-            <button onclick="openPaymentModal()" class="absolute top-4 left-4 z-20 bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold px-4 py-2 rounded-lg shadow-lg transition duration-200 flex items-center space-x-2 text-xs md:text-sm">
+            <!-- Payment Details Button -->
+            <button onclick="openPaymentModal(event)" class="absolute top-4 left-4 z-20 bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold px-4 py-2 rounded-lg shadow-lg transition duration-200 flex items-center space-x-2 text-xs md:text-sm">
                 <i class="fa-solid fa-credit-card"></i>
                 <span>Payment Details</span>
             </button>
 
-            <!-- Center Welcome Box -->
-            <div class="relative z-10 text-center text-white px-6 py-4 bg-black/50 rounded-lg backdrop-blur-xs max-w-2xl mx-auto border border-white/20 shadow-lg mt-8">
+            <!-- Center Welcome Box (id="welcome-box" ලෙස හඳුන්වා දී ඇත) -->
+            <div id="welcome-box" class="relative z-10 text-center text-white px-6 py-4 bg-black/50 rounded-lg backdrop-blur-xs max-w-2xl mx-auto border border-white/20 shadow-lg mt-8 transition-all duration-300">
                 <h1 class="text-2xl md:text-3xl font-extrabold drop-shadow-md">Welcome to Friendly Editor</h1>
                 <p class="text-xs md:text-sm font-medium text-gray-100 drop-shadow mt-1">
                     Your Trusted Partner for Printing &amp; Document Service.
@@ -202,10 +202,10 @@
             <div class="space-y-3 text-sm text-gray-700">
                 <div class="bg-blue-50 p-3 rounded-lg border border-blue-100">
                     <p class="font-bold text-blue-900">Bank Account Info</p>
-                    <p><span class="font-semibold">Bank:</span>Peoples Bank</p>
-                    <p><span class="font-semibold">Account Name:</span> A.H.G.C Gunarathna</p>
-                    <p><span class="font-semibold">Account No:</span> 089200200004498</p>
-                    <p><span class="font-semibold">Branch:</span> Katugastota</p>
+                    <p><span class="font-semibold">Bank:</span> Commercial Bank / Peoples Bank</p>
+                    <p><span class="font-semibold">Account Name:</span> Friendly Editor</p>
+                    <p><span class="font-semibold">Account No:</span> XXXX-XXXX-XXXX</p>
+                    <p><span class="font-semibold">Branch:</span> Colombo</p>
                 </div>
                 
                 <p class="text-xs text-gray-500 italic text-center mt-2">
@@ -234,11 +234,32 @@
 
     <!-- JavaScript Logic -->
     <script>
+        // Welcome Box Elements
+        const welcomeBox = document.getElementById('welcome-box');
+
+        // Page Click Event (ඕනෑම තැනක ක්ලික් කළ විට Welcome Box එක Hide වීම)
+        document.addEventListener('click', (event) => {
+            // ක්ලික් කළේ Home Button එක නොවේ නම් පමණක් Hide කරන්න
+            const isHomeClick = event.target.closest('a[onclick="showWelcomeBox()"]');
+            
+            if (!isHomeClick && welcomeBox) {
+                welcomeBox.classList.add('hidden');
+            }
+        });
+
+        // Home ක්ලික් කළ විට නැවත Welcome Box එක පෙන්වීම
+        function showWelcomeBox() {
+            if (welcomeBox) {
+                welcomeBox.classList.remove('hidden');
+            }
+        }
+
         // Toggle Mobile Navigation
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        menuBtn.addEventListener('click', () => {
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             mobileMenu.classList.toggle('hidden');
         });
 
@@ -262,15 +283,9 @@
             });
         });
 
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', () => {
-            document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                menu.classList.add('hidden');
-            });
-        });
-
         // Payment Modal Functions
-        function openPaymentModal() {
+        function openPaymentModal(e) {
+            if(e) e.stopPropagation();
             document.getElementById('paymentModal').classList.remove('hidden');
         }
 
