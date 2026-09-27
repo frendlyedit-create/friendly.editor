@@ -160,14 +160,15 @@
             <div class="relative w-full h-[350px] md:h-full min-h-[350px] flex items-center justify-center p-6 overflow-hidden">
                 <img src="nnn.jpg" alt="Friendly Editor Service Background" class="absolute inset-0 w-full h-full object-cover">
                 
-                <!-- Buttons overlay at the top left/center area as circled in the image -->
+                <!-- Buttons overlay -->
                 <div class="absolute top-6 left-1/2 -translate-x-1/2 md:left-12 md:translate-x-0 z-30 flex items-center space-x-3">
                     <button onclick="toggleModal('paymentModal', true)" class="bg-yellow-500 hover:bg-yellow-400 text-gray-950 font-bold px-4 py-2 rounded-xl shadow-xl transition transform hover:scale-105 active:scale-95 flex items-center space-x-2 text-xs md:text-sm cursor-pointer whitespace-nowrap">
                         <i class="fa-solid fa-credit-card"></i>
                         <span>Payment Details</span>
                     </button>
 
-                    <button onclick="toggleModal('selfEditModal', true)" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2 rounded-xl shadow-xl transition transform hover:scale-105 active:scale-95 flex items-center space-x-2 text-xs md:text-sm cursor-pointer whitespace-nowrap">
+                    <!-- Black Button for Free Self Edit -->
+                    <button onclick="toggleModal('selfEditModal', true)" class="bg-black hover:bg-gray-800 text-white font-bold px-4 py-2 rounded-xl shadow-xl transition transform hover:scale-105 active:scale-95 flex items-center space-x-2 text-xs md:text-sm cursor-pointer whitespace-nowrap">
                         <i class="fa-solid fa-sliders"></i>
                         <span>Free Self Edit</span>
                     </button>
