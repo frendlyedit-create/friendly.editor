@@ -162,7 +162,7 @@
             </div>
         </div>
 
-        <!-- Mobile Navigation Menu (Fully Responsive Expansion) -->
+        <!-- Mobile Navigation Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-[#002B7F] px-5 py-3 space-y-3 border-t border-blue-800 max-h-[80vh] overflow-y-auto">
             <a href="javascript:void(0)" onclick="handleNavClick('home')" class="block py-1.5 text-sm font-medium hover:text-gray-300 border-b border-blue-800/60">Home</a>
             
@@ -197,13 +197,17 @@
                     <a href="mailto:friendly.aeditor@gmail.com" class="block py-1 hover:text-gray-300">
                         <i class="fa-solid fa-envelope mr-2 text-red-400"></i>friendly.aeditor@gmail.com
                     </a>
-                    <!-- Main Content Layout -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Layout -->
     <div class="flex-grow w-full">
         <main class="relative w-full min-h-[450px] sm:min-h-[500px] grid grid-cols-1 md:grid-cols-2 bg-gray-900 overflow-hidden">
             
             <!-- Left Side Image Section -->
             <div class="relative w-full h-64 md:h-full min-h-[300px]">
-                <!-- My -->
                 <img src="left-image.jpg" alt="Left Side Photo" class="w-full h-full object-cover">
                 
                 <!-- Left Side Action Buttons Container -->
@@ -237,27 +241,8 @@
 
         </main>
     </div>
-                    <span>Payment Details</span>
-                </button>
 
-                <!-- Free Self Edit Button -->
-                <button onclick="openSelfEditModal(event)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-3 py-2 sm:px-4 rounded-lg shadow-lg transition duration-200 flex items-center space-x-2 text-xs md:text-sm active:scale-95">
-                    <i class="fa-solid fa-sliders"></i>
-                    <span>Free Self Edit</span>
-                </button>
-            </div>
-
-            <!-- Center Welcome Box -->
-            <div id="welcome-box" class="hidden relative z-10 text-center text-white px-5 py-4 bg-black/60 rounded-xl backdrop-blur-xs max-w-xl mx-auto border border-white/20 shadow-xl mt-20 sm:mt-8 transition-all duration-500">
-                <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold drop-shadow-md">Welcome to Friendly Editor</h1>
-                <p class="text-xs sm:text-sm font-medium text-gray-100 drop-shadow mt-1">
-                    Your Trusted Partner for Printing &amp; Document Service.
-                </p>
-            </div>
-        </main>
-    </div>
-
-    <!-- Footer Section (Mobile Centered) -->
+    <!-- Footer Section -->
     <footer class="bg-[#002B7F] text-white py-4 px-4 flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0 text-center sm:text-left">
         <!-- Left Side: Page Rating -->
         <div class="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-3 text-xs">
@@ -292,7 +277,7 @@
             <div class="space-y-3 text-xs sm:text-sm text-gray-700">
                 <div class="bg-blue-50 p-3.5 rounded-lg border border-blue-100">
                     <p class="font-bold text-blue-900 mb-1">Bank Account Info</p>
-                    <p><span class="font-semibold">Bank:</span> / Peoples Bank</p>
+                    <p><span class="font-semibold">Bank:</span> Peoples Bank</p>
                     <p><span class="font-semibold">Account Name:</span> A.H.G.C Gunarathna</p>
                     <p><span class="font-semibold">Account No:</span> 089200200004498</p>
                     <p><span class="font-semibold">Branch:</span> Katugasthota</p>
@@ -307,7 +292,7 @@
         </div>
     </div>
 
-    <!-- Self Edit Tools Pop-up Modal (Mobile Grid Fixed) -->
+    <!-- Self Edit Tools Pop-up Modal -->
     <div id="selfEditModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-3 sm:p-4">
         <div class="bg-white rounded-xl max-w-xl w-full p-4 sm:p-6 relative shadow-2xl transform transition-all text-left max-h-[90vh] overflow-y-auto">
             <button onclick="closeSelfEditModal()" class="absolute right-3 top-2 text-gray-400 hover:text-gray-600 text-2xl font-bold focus:outline-none p-1">&times;</button>
@@ -391,14 +376,12 @@
     <script>
         const welcomeBox = document.getElementById('welcome-box');
 
-        // පිටුව Load වන විට Welcome Box එක පළමු වරට පමණක් පෙන්වීමට අදාළ Script එක
         document.addEventListener('DOMContentLoaded', () => {
             const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
 
             if (!hasSeenWelcome) {
                 welcomeBox.classList.remove('hidden');
 
-                // තත්පර 7කින් පසු අතුරුදහන් කරන්න
                 setTimeout(() => {
                     welcomeBox.classList.add('hidden');
                     localStorage.setItem('hasSeenWelcome', 'true');
@@ -406,7 +389,6 @@
             }
         });
 
-        // Rating Submit Function
         function submitRating(stars) {
             const ratingMsg = document.getElementById('ratingMsg');
             ratingMsg.classList.remove('hidden');
@@ -415,14 +397,12 @@
             }, 3000);
         }
 
-        // සියලුම Dropdown Menus වසා දැමීමේ පොදු Function එක
         function closeAllDropdowns() {
             document.querySelectorAll('.dropdown-menu').forEach(menu => {
                 menu.classList.add('hidden');
             });
         }
 
-        // Dropdown Toggle Logic
         function toggleDropdown(e, targetId) {
             e.stopPropagation();
             const targetMenu = document.getElementById(targetId);
@@ -435,7 +415,6 @@
             }
         }
 
-        // Mobile Accordion Toggle Logic
         function toggleMobileAccordion(accordionId) {
             const accordionContent = document.getElementById(accordionId);
             if (accordionContent) {
@@ -443,7 +422,6 @@
             }
         }
 
-        // Navigation Link Clicks
         function handleNavClick(action) {
             closeAllDropdowns();
             const mobileMenu = document.getElementById('mobile-menu');
@@ -456,14 +434,12 @@
             }
         }
 
-        // Window Click Listener
         document.addEventListener('click', (event) => {
             if (!event.target.closest('.dropdown-menu')) {
                 closeAllDropdowns();
             }
         });
 
-        // Toggle Mobile Navigation
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -473,7 +449,6 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Payment Modal Functions
         function openPaymentModal(e) {
             if (e) e.stopPropagation();
             closeAllDropdowns();
@@ -484,7 +459,6 @@
             document.getElementById('paymentModal').classList.add('hidden');
         }
 
-        // Self Edit Modal Functions
         function openSelfEditModal(e) {
             if (e) e.stopPropagation();
             closeAllDropdowns();
@@ -495,7 +469,6 @@
             document.getElementById('selfEditModal').classList.add('hidden');
         }
 
-        // Track Item Modal Functions
         function openModal() {
             closeAllDropdowns();
             document.getElementById('trackModal').classList.remove('hidden');
@@ -507,7 +480,6 @@
             document.getElementById('jobNoInput').value = '';
         }
 
-        // Track Document Script
         async function trackItem() {
             let phoneInput = document.getElementById('jobNoInput').value.trim();
             phoneInput = phoneInput.replace(/\s+/g, '').replace(/-/g, '').replace(/^\+94/, '0');
@@ -539,23 +511,19 @@
                     let sheetPhone = String(row.c[0].v || '').trim();
                     sheetPhone = sheetPhone.replace(/\s+/g, '').replace(/-/g, '').replace(/^\+94/, '0');
 
-                    if (sheetPhone === phoneInput || sheetPhone.replace(/^0/, '') === phoneInput.replace(/^0/, '')) {
-                        foundUrl = row.c[1] ? (row.c[1].g || row.c[1].v) : null;
+                    if (sheetPhone === phoneInput) {
+                        foundUrl = row.c[1] ? row.c[1].v : null;
                         break;
                     }
                 }
 
                 if (foundUrl) {
-                    resultDiv.innerHTML = `
-                        <p class="text-green-600 mb-2">ඔබගේ Document එක සූදානම්!</p>
-                        <a href="${foundUrl}" target="_blank" class="inline-block px-5 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-bold transition">Document එක බලන්න</a>
-                    `;
+                    resultDiv.innerHTML = `<a href="${foundUrl}" target="_blank" class="text-blue-600 underline font-bold">ඔබගේ ලේඛනය ලබා ගැනීමට මෙතැන ක්ලික් කරන්න</a>`;
                 } else {
-                    resultDiv.innerHTML = "<span class='text-red-500'>මෙම දුරකථන අංකයට අදාළ Document එකක් හමු නොවුණි.</span>";
+                    resultDiv.innerHTML = "<span class='text-red-500'>ඇතුළත් කළ දුරකථන අංකයට අදාළ දත්ත හමු නොවීය.</span>";
                 }
             } catch (error) {
-                console.error(error);
-                resultDiv.innerHTML = "<span class='text-red-500'>දෝෂයක් සිදු විය. පසුව නැවත උත්සාහ කරන්න.</span>";
+                resultDiv.innerHTML = "<span class='text-red-500'>දත්ත සෙවීමේදී දෝෂයක් සිදු විය. කරුණාකර නැවත උත්සාහ කරන්න.</span>";
             }
         }
     </script>
