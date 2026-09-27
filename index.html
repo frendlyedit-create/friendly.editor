@@ -149,25 +149,27 @@
 
     <!-- Main Content Layout -->
     <div class="flex-grow w-full">
-        <main class="relative w-full min-h-[450px] sm:min-h-[520px] grid grid-cols-1 md:grid-cols-2 bg-gray-900 overflow-hidden">
+        <main class="w-full min-h-[450px] grid grid-cols-1 md:grid-cols-2 bg-gray-900">
             
-            <div class="relative w-full h-72 md:h-full min-h-[320px]">
-                <img src="Add.jpg" alt="Friendly Editor Advertisement" class="w-full h-full object-cover">
+            <!-- Left Side Section (Fixed) -->
+            <div class="relative w-full h-[350px] md:h-full min-h-[350px] flex items-center justify-center overflow-hidden">
+                <img src="Add.jpg" alt="Friendly Editor Advertisement" class="absolute inset-0 w-full h-full object-cover">
                 
-                <div class="absolute top-5 left-5 z-20 flex flex-col space-y-3">
-                    <button onclick="toggleModal('paymentModal', true)" class="bg-yellow-500 hover:bg-yellow-400 text-gray-950 font-bold px-4 py-2.5 rounded-lg shadow-xl transition transform hover:scale-105 active:scale-95 flex items-center space-x-2 text-xs md:text-sm">
+                <div class="absolute top-5 left-5 z-30 flex flex-col space-y-3">
+                    <button onclick="toggleModal('paymentModal', true)" class="bg-yellow-500 hover:bg-yellow-400 text-gray-950 font-bold px-4 py-2.5 rounded-lg shadow-xl transition transform hover:scale-105 active:scale-95 flex items-center space-x-2 text-xs md:text-sm cursor-pointer">
                         <i class="fa-solid fa-credit-card"></i>
                         <span>Payment Details</span>
                     </button>
 
-                    <button onclick="toggleModal('selfEditModal', true)" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2.5 rounded-lg shadow-xl transition transform hover:scale-105 active:scale-95 flex items-center space-x-2 text-xs md:text-sm">
+                    <button onclick="toggleModal('selfEditModal', true)" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2.5 rounded-lg shadow-xl transition transform hover:scale-105 active:scale-95 flex items-center space-x-2 text-xs md:text-sm cursor-pointer">
                         <i class="fa-solid fa-sliders"></i>
                         <span>Free Self Edit</span>
                     </button>
                 </div>
             </div>
 
-            <div class="relative w-full h-full min-h-[320px] flex items-center justify-center p-6">
+            <!-- Right Side Section -->
+            <div class="relative w-full h-[350px] md:h-full min-h-[350px] flex items-center justify-center p-6 overflow-hidden">
                 <img src="nnn.jpg" alt="Friendly Editor Service Background" class="absolute inset-0 w-full h-full object-cover opacity-80">
                 
                 <div id="welcome-box" class="hidden relative z-10 text-center text-white p-6 bg-black/70 rounded-2xl max-w-md mx-auto border border-white/20 shadow-2xl">
