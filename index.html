@@ -197,38 +197,46 @@
                     <a href="mailto:friendly.aeditor@gmail.com" class="block py-1 hover:text-gray-300">
                         <i class="fa-solid fa-envelope mr-2 text-red-400"></i>friendly.aeditor@gmail.com
                     </a>
-                    <a href="https://facebook.com" target="_blank" class="block py-1 hover:text-gray-300">
-                        <i class="fa-brands fa-facebook mr-2 text-blue-400"></i>Facebook Page
-                    </a>
-                    <a href="https://api.whatsapp.com/send?phone=+94751659106" target="_blank" class="block py-1 hover:text-gray-300">
-                        <i class="fa-brands fa-whatsapp mr-2 text-green-400"></i>WhatsApp (+94751659106)
-                    </a>
-                </div>
-            </div>
-
-            <!-- Mobile About Us Section -->
-            <div class="pt-1">
-                <button onclick="toggleMobileAccordion('mobile-about')" class="w-full flex justify-between items-center py-1.5 text-sm font-medium focus:outline-none">
-                    <span>About Us</span>
-                    <i class="fa-solid fa-chevron-down text-xs"></i>
-                </button>
-                <div id="mobile-about" class="hidden pl-3 pt-1 text-xs text-blue-100 leading-relaxed">
-                    Welcome to <strong>Friendly Editor</strong>! We are your premier destination for high-quality printing, typesetting, and document processing services.
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content Layout -->
+                    <!-- Main Content Layout -->
     <div class="flex-grow w-full">
-        <main class="relative w-full min-h-[450px] sm:min-h-[500px] flex items-start justify-center bg-gray-900 p-4 sm:p-6">
-            <img src="nnn.jpg" alt="Friendly Editor Service" class="absolute inset-0 w-full h-full object-cover opacity-85">
+        <main class="relative w-full min-h-[450px] sm:min-h-[500px] grid grid-cols-1 md:grid-cols-2 bg-gray-900 overflow-hidden">
             
-            <!-- Left Side Action Buttons Container (Mobile Touch Optimized) -->
-            <div class="absolute top-4 left-4 z-20 flex flex-col space-y-2">
-                <!-- Payment Details Button -->
-                <button onclick="openPaymentModal(event)" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold px-3 py-2 sm:px-4 rounded-lg shadow-lg transition duration-200 flex items-center space-x-2 text-xs md:text-sm active:scale-95">
-                    <i class="fa-solid fa-credit-card"></i>
+            <!-- Left Side Image Section -->
+            <div class="relative w-full h-64 md:h-full min-h-[300px]">
+                <!-- My -->
+                <img src="left-image.jpg" alt="Left Side Photo" class="w-full h-full object-cover">
+                
+                <!-- Left Side Action Buttons Container -->
+                <div class="absolute top-4 left-4 z-20 flex flex-col space-y-2">
+                    <!-- Payment Details Button -->
+                    <button onclick="openPaymentModal(event)" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold px-3 py-2 sm:px-4 rounded-lg shadow-lg transition duration-200 flex items-center space-x-2 text-xs md:text-sm active:scale-95">
+                        <i class="fa-solid fa-credit-card"></i>
+                        <span>Payment Details</span>
+                    </button>
+
+                    <!-- Free Self Edit Button -->
+                    <button onclick="openSelfEditModal(event)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-3 py-2 sm:px-4 rounded-lg shadow-lg transition duration-200 flex items-center space-x-2 text-xs md:text-sm active:scale-95">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span>Free Self Edit</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Side Image Section -->
+            <div class="relative w-full h-full min-h-[300px] flex items-center justify-center p-4 sm:p-6">
+                <img src="nnn.jpg" alt="Friendly Editor Service" class="absolute inset-0 w-full h-full object-cover opacity-85">
+                
+                <!-- Center Welcome Box -->
+                <div id="welcome-box" class="hidden relative z-10 text-center text-white px-5 py-4 bg-black/60 rounded-xl backdrop-blur-xs max-w-xl mx-auto border border-white/20 shadow-xl transition-all duration-500">
+                    <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold drop-shadow-md">Welcome to Friendly Editor</h1>
+                    <p class="text-xs sm:text-sm font-medium text-gray-100 drop-shadow mt-1">
+                        Your Trusted Partner for Printing &amp; Document Service.
+                    </p>
+                </div>
+            </div>
+
+        </main>
+    </div>
                     <span>Payment Details</span>
                 </button>
 
