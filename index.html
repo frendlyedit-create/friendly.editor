@@ -16,7 +16,7 @@
         .animate-marquee {
             display: inline-block;
             white-space: nowrap;
-            animation: marquee 12s linear infinite;
+            animation: marquee 14s linear infinite;
         }
 
         /* Star Rating Styles */
@@ -30,7 +30,7 @@
         }
         .star-rating label {
             font-size: 1.2rem;
-            color: #cbd5e1; /* Default Gray */
+            color: #cbd5e1;
             cursor: pointer;
             transition: color 0.2s ease-in-out;
             padding: 0 3px;
@@ -38,14 +38,14 @@
         .star-rating label:hover,
         .star-rating label:hover ~ label,
         .star-rating input:checked ~ label {
-            color: #f59e0b; /* Yellow/Gold on Hover and Checked */
+            color: #f59e0b;
         }
     </style>
 </head>
-<body class="bg-gray-100 font-sans flex flex-col min-h-screen text-gray-800 antialiased">
+<body class="bg-gray-100 font-sans flex flex-col min-h-screen text-gray-800 antialiased select-none">
 
     <!-- Header Section -->
-    <header class="bg-white py-3 px-4 md:px-12 flex justify-between items-center border-b overflow-hidden">
+    <header class="bg-white py-3 px-4 md:px-12 flex justify-between items-center border-b shadow-xs relative z-20">
         <div class="flex items-center space-x-3 max-w-xl w-full justify-between sm:justify-start">
             <div class="text-left whitespace-nowrap">
                 <a href="javascript:void(0)" onclick="handleNavClick('home')">
@@ -55,7 +55,7 @@
             </div>
             
             <!-- Moving Text (Desktop) -->
-            <div class="overflow-hidden w-full hidden sm:block">
+            <div class="overflow-hidden w-full hidden sm:block ml-4">
                 <div class="animate-marquee text-xs font-semibold italic text-gray-700 tracking-wide">
                     Your Trusted Partner for Printing &amp; Document Service
                 </div>
@@ -71,131 +71,131 @@
     </div>
 
     <!-- Top Navigation Bar -->
-    <nav class="bg-[#002B7F] text-white shadow-md relative z-30">
+    <nav class="bg-[#002B7F] text-white shadow-lg relative z-30">
         <div class="container mx-auto px-4 py-2.5 sm:py-3 flex justify-between items-center">
             
             <!-- Mobile Menu Toggle Button -->
-            <button id="menu-btn" class="md:hidden text-white focus:outline-none p-1" aria-label="Toggle Navigation">
+            <button id="menu-btn" class="md:hidden text-white focus:outline-none p-1.5 rounded-md hover:bg-blue-800 transition" aria-label="Toggle Navigation">
                 <i class="fa-solid fa-bars text-2xl"></i>
             </button>
 
             <!-- Navigation Links (Desktop) -->
-            <div id="menu" class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide items-center">
+            <div class="hidden md:flex space-x-8 text-sm font-semibold tracking-wide items-center">
                 <!-- Home Button -->
-                <a href="javascript:void(0)" onclick="handleNavClick('home')" class="hover:text-gray-300 transition">Home</a>
+                <a href="javascript:void(0)" onclick="handleNavClick('home')" class="hover:text-yellow-300 transition-colors">Home</a>
                 
                 <!-- About Us Dropdown Trigger -->
                 <div class="relative dropdown-container">
-                    <button class="dropdown-btn hover:text-gray-300 transition flex items-center space-x-1 focus:outline-none" onclick="toggleDropdown(event, 'about-dropdown')">
+                    <button class="hover:text-yellow-300 transition-colors flex items-center space-x-1.5 focus:outline-none py-1" onclick="toggleDropdown(event, 'about-dropdown')">
                         <span>About Us</span>
                         <i class="fa-solid fa-chevron-down text-xs"></i>
                     </button>
+
+                    <!-- Desktop About Us Dropdown Panel -->
+                    <div id="about-dropdown" class="dropdown-menu hidden absolute left-0 mt-2 w-80 bg-white text-gray-800 rounded-xl shadow-2xl border border-gray-100 p-5 z-50">
+                        <h3 class="text-base font-bold text-[#002B7F] mb-2 border-b pb-1.5">About Friendly Editor</h3>
+                        <p class="text-xs text-gray-600 leading-relaxed">
+                            Welcome to <strong>Friendly Editor</strong>! We are your premier destination for high-quality printing, typesetting, graphic design, and document processing services.
+                        </p>
+                    </div>
                 </div>
 
                 <!-- Our Services Dropdown Trigger -->
                 <div class="relative dropdown-container">
-                    <button class="dropdown-btn hover:text-gray-300 transition flex items-center space-x-1 focus:outline-none" onclick="toggleDropdown(event, 'services-dropdown')">
+                    <button class="hover:text-yellow-300 transition-colors flex items-center space-x-1.5 focus:outline-none py-1" onclick="toggleDropdown(event, 'services-dropdown')">
                         <span>Our Services</span>
                         <i class="fa-solid fa-chevron-down text-xs"></i>
                     </button>
 
-                    <div id="services-dropdown" class="dropdown-menu hidden absolute left-0 mt-2 w-56 bg-white text-gray-800 rounded-md shadow-xl border border-gray-200 py-2 z-50">
-                        <a href="./pages/bio-data.html" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
-                            <i class="fa-solid fa-id-card mr-2 text-blue-900"></i> Bio Data
+                    <div id="services-dropdown" class="dropdown-menu hidden absolute left-0 mt-2 w-56 bg-white text-gray-800 rounded-xl shadow-2xl border border-gray-100 py-2 z-50">
+                        <a href="./pages/bio-data.html" class="flex items-center px-4 py-2.5 text-xs font-semibold hover:bg-blue-50 hover:text-[#002B7F] border-b border-gray-100 transition">
+                            <i class="fa-solid fa-id-card mr-3 text-[#002B7F]"></i> Bio Data
                         </a>
-                        <a href="./pages/service-letter.html" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
-                            <i class="fa-solid fa-file-contract mr-2 text-blue-900"></i> Service Letter
+                        <a href="./pages/service-letter.html" class="flex items-center px-4 py-2.5 text-xs font-semibold hover:bg-blue-50 hover:text-[#002B7F] border-b border-gray-100 transition">
+                            <i class="fa-solid fa-file-contract mr-3 text-[#002B7F]"></i> Service Letter
                         </a>
-                        <a href="./pages/online-application.html" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
-                            <i class="fa-solid fa-laptop-code mr-2 text-blue-900"></i> Any Online Application
+                        <a href="./pages/online-application.html" class="flex items-center px-4 py-2.5 text-xs font-semibold hover:bg-blue-50 hover:text-[#002B7F] border-b border-gray-100 transition">
+                            <i class="fa-solid fa-laptop-code mr-3 text-[#002B7F]"></i> Any Online Application
                         </a>
-                        <a href="./pages/photo-editing.html" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
-                            <i class="fa-solid fa-image mr-2 text-blue-900"></i> Photo Editing
+                        <a href="./pages/photo-editing.html" class="flex items-center px-4 py-2.5 text-xs font-semibold hover:bg-blue-50 hover:text-[#002B7F] border-b border-gray-100 transition">
+                            <i class="fa-solid fa-image mr-3 text-[#002B7F]"></i> Photo Editing
                         </a>
-                        <a href="./pages/video-editing.html" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
-                            <i class="fa-solid fa-video mr-2 text-blue-900"></i> Video Editing
+                        <a href="./pages/video-editing.html" class="flex items-center px-4 py-2.5 text-xs font-semibold hover:bg-blue-50 hover:text-[#002B7F] border-b border-gray-100 transition">
+                            <i class="fa-solid fa-video mr-3 text-[#002B7F]"></i> Video Editing
                         </a>
-                        <a href="./pages/any-design.html" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900">
-                            <i class="fa-solid fa-pen-ruler mr-2 text-blue-900"></i> Any Design
+                        <a href="./pages/any-design.html" class="flex items-center px-4 py-2.5 text-xs font-semibold hover:bg-blue-50 hover:text-[#002B7F] transition">
+                            <i class="fa-solid fa-pen-ruler mr-3 text-[#002B7F]"></i> Any Design
                         </a>
                     </div>
                 </div>
 
                 <!-- Contact Us Dropdown Trigger -->
                 <div class="relative dropdown-container">
-                    <button class="dropdown-btn hover:text-gray-300 transition flex items-center space-x-1 focus:outline-none" onclick="toggleDropdown(event, 'contact-dropdown')">
+                    <button class="hover:text-yellow-300 transition-colors flex items-center space-x-1.5 focus:outline-none py-1" onclick="toggleDropdown(event, 'contact-dropdown')">
                         <span>Contact Us</span>
                         <i class="fa-solid fa-chevron-down text-xs"></i>
                     </button>
 
-                    <div id="contact-dropdown" class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-white text-gray-800 rounded-md shadow-xl border border-gray-200 py-2 z-50">
-                        <a href="mailto:friendly.aeditor@gmail.com" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
-                            <i class="fa-solid fa-envelope mr-2 text-red-600 text-sm"></i> friendly.aeditor@gmail.com
+                    <div id="contact-dropdown" class="dropdown-menu hidden absolute left-0 mt-2 w-64 bg-white text-gray-800 rounded-xl shadow-2xl border border-gray-100 py-2 z-50">
+                        <a href="mailto:friendly.aeditor@gmail.com" class="flex items-center px-4 py-2.5 text-xs font-semibold hover:bg-blue-50 hover:text-[#002B7F] border-b border-gray-100 transition">
+                            <i class="fa-solid fa-envelope mr-3 text-red-600"></i> friendly.aeditor@gmail.com
                         </a>
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900 border-b border-gray-100">
-                            <i class="fa-brands fa-facebook mr-2 text-blue-600 text-sm"></i> Facebook Page
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="flex items-center px-4 py-2.5 text-xs font-semibold hover:bg-blue-50 hover:text-[#002B7F] border-b border-gray-100 transition">
+                            <i class="fa-brands fa-facebook mr-3 text-blue-600"></i> Facebook Page
                         </a>
-                        <a href="https://api.whatsapp.com/send?phone=+94751659106" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-xs font-semibold hover:bg-blue-50 hover:text-blue-900">
-                            <i class="fa-brands fa-whatsapp mr-2 text-green-500 text-sm"></i> WhatsApp
+                        <a href="https://api.whatsapp.com/send?phone=+94751659106" target="_blank" rel="noopener noreferrer" class="flex items-center px-4 py-2.5 text-xs font-semibold hover:bg-blue-50 hover:text-[#002B7F] transition">
+                            <i class="fa-brands fa-whatsapp mr-3 text-green-500"></i> WhatsApp
                         </a>
                     </div>
                 </div>
 
                 <!-- Track Your Item Button -->
-                <a href="javascript:void(0)" onclick="handleNavClick('track')" class="hover:text-gray-300 transition">Track Your Item</a>
+                <a href="javascript:void(0)" onclick="handleNavClick('track')" class="hover:text-yellow-300 transition-colors">Track Your Item</a>
             </div>
 
-            <!-- WhatsApp CTA Button -->
-            <a href="https://api.whatsapp.com/send?phone=+94751659106" target="_blank" rel="noopener noreferrer" class="bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 rounded-full flex items-center space-x-1.5 text-xs md:text-sm font-bold shadow transition">
+            <!-- WhatsApp CTA Button (Line 149) -->
+            <a href="https://api.whatsapp.com/send?phone=+94751659106" target="_blank" rel="noopener noreferrer" class="bg-green-500 hover:bg-green-600 text-white px-3.5 py-1.5 rounded-full flex items-center space-x-2 text-xs md:text-sm font-bold shadow-md transition transform hover:scale-105 active:scale-95">
                 <i class="fa-brands fa-whatsapp text-lg"></i>
                 <span>Only WhatsApp</span>
             </a>
         </div>
 
-        <!-- Desktop About Us Dropdown Panel -->
-        <div id="about-dropdown" class="dropdown-menu hidden absolute left-0 right-0 top-full bg-white text-gray-800 shadow-xl border-t-2 border-red-600 z-40">
-            <div class="container mx-auto p-6 max-w-4xl">
-                <h3 class="text-xl font-bold text-blue-900 mb-2 border-b pb-2">About Friendly Editor</h3>
-                <p class="text-sm text-gray-600 leading-relaxed mb-3">
-                    Welcome to <strong>Friendly Editor</strong>! We are your premier destination for high-quality printing, typesetting, and document processing services.
-                </p>
-            </div>
-        </div>
-
         <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-[#002B7F] px-5 py-3 space-y-3 border-t border-blue-800 max-h-[80vh] overflow-y-auto">
-            <a href="javascript:void(0)" onclick="handleNavClick('home')" class="block py-1.5 text-sm font-medium hover:text-gray-300 border-b border-blue-800/60">Home</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-[#001f5c] px-6 py-4 space-y-3 border-t border-blue-900 max-h-[80vh] overflow-y-auto">
+            <a href="javascript:void(0)" onclick="handleNavClick('home')" class="block py-2 text-sm font-medium hover:text-yellow-300 border-b border-blue-800/50">Home</a>
             
-            <!-- Mobile Track Your Item Button -->
-            <a href="javascript:void(0)" onclick="handleNavClick('track')" class="block py-1.5 text-sm font-medium text-yellow-300 hover:text-yellow-200 border-b border-blue-800/60">
+            <a href="javascript:void(0)" onclick="handleNavClick('track')" class="block py-2 text-sm font-semibold text-yellow-300 hover:text-yellow-200 border-b border-blue-800/50">
                 <i class="fa-solid fa-magnifying-glass mr-2"></i>Track Your Item
             </a>
             
-            <!-- Mobile Accordion: Our Services -->
-            <div class="border-b border-blue-800/60 pb-2">
-                <button onclick="toggleMobileAccordion('mobile-services')" class="w-full flex justify-between items-center py-1.5 text-sm font-medium focus:outline-none">
+            <!-- Mobile Accordion: Services -->
+            <div class="border-b border-blue-800/50 pb-2">
+                <button onclick="toggleMobileAccordion('mobile-services')" class="w-full flex justify-between items-center py-2 text-sm font-medium focus:outline-none">
                     <span>Our Services</span>
                     <i class="fa-solid fa-chevron-down text-xs"></i>
                 </button>
-                <div id="mobile-services" class="hidden pl-3 pt-1 space-y-2 text-xs">
-                    <a href="./pages/bio-data.html" class="block py-1 hover:text-gray-300"><i class="fa-solid fa-id-card mr-2 text-blue-300"></i>Bio Data</a>
-                    <a href="./pages/service-letter.html" class="block py-1 hover:text-gray-300"><i class="fa-solid fa-file-contract mr-2 text-blue-300"></i>Service Letter</a>
-                    <a href="./pages/online-application.html" class="block py-1 hover:text-gray-300"><i class="fa-solid fa-laptop-code mr-2 text-blue-300"></i>Any Online Application</a>
-                    <a href="./pages/photo-editing.html" class="block py-1 hover:text-gray-300"><i class="fa-solid fa-image mr-2 text-blue-300"></i>Photo Editing</a>
-                    <a href="./pages/video-editing.html" class="block py-1 hover:text-gray-300"><i class="fa-solid fa-video mr-2 text-blue-300"></i>Video Editing</a>
-                    <a href="./pages/any-design.html" class="block py-1 hover:text-gray-300"><i class="fa-solid fa-pen-ruler mr-2 text-blue-300"></i>Any Design</a>
+                <div id="mobile-services" class="hidden pl-4 pt-2 space-y-2.5 text-xs">
+                    <a href="./pages/bio-data.html" class="block hover:text-yellow-300"><i class="fa-solid fa-id-card mr-2 text-blue-300"></i>Bio Data</a>
+                    <a href="./pages/service-letter.html" class="block hover:text-yellow-300"><i class="fa-solid fa-file-contract mr-2 text-blue-300"></i>Service Letter</a>
+                    <a href="./pages/online-application.html" class="block hover:text-yellow-300"><i class="fa-solid fa-laptop-code mr-2 text-blue-300"></i>Any Online Application</a>
+                    <a href="./pages/photo-editing.html" class="block hover:text-yellow-300"><i class="fa-solid fa-image mr-2 text-blue-300"></i>Photo Editing</a>
+                    <a href="./pages/video-editing.html" class="block hover:text-yellow-300"><i class="fa-solid fa-video mr-2 text-blue-300"></i>Video Editing</a>
+                    <a href="./pages/any-design.html" class="block hover:text-yellow-300"><i class="fa-solid fa-pen-ruler mr-2 text-blue-300"></i>Any Design</a>
                 </div>
             </div>
 
-            <!-- Mobile Accordion: Contact Us -->
-            <div class="border-b border-blue-800/60 pb-2">
-                <button onclick="toggleMobileAccordion('mobile-contact')" class="w-full flex justify-between items-center py-1.5 text-sm font-medium focus:outline-none">
+            <!-- Mobile Accordion: Contact -->
+            <div class="border-b border-blue-800/50 pb-2">
+                <button onclick="toggleMobileAccordion('mobile-contact')" class="w-full flex justify-between items-center py-2 text-sm font-medium focus:outline-none">
                     <span>Contact Us</span>
                     <i class="fa-solid fa-chevron-down text-xs"></i>
                 </button>
-                <div id="mobile-contact" class="hidden pl-3 pt-1 space-y-2 text-xs">
-                    <a href="mailto:friendly.aeditor@gmail.com" class="block py-1 hover:text-gray-300">
+                <div id="mobile-contact" class="hidden pl-4 pt-2 space-y-2.5 text-xs">
+                    <a href="mailto:friendly.aeditor@gmail.com" class="block hover:text-yellow-300">
                         <i class="fa-solid fa-envelope mr-2 text-red-400"></i>friendly.aeditor@gmail.com
+                    </a>
+                    <a href="https://facebook.com" target="_blank" class="block hover:text-yellow-300">
+                        <i class="fa-brands fa-facebook mr-2 text-blue-400"></i>Facebook Page
                     </a>
                 </div>
             </div>
@@ -204,36 +204,34 @@
 
     <!-- Main Content Layout -->
     <div class="flex-grow w-full">
-        <main class="relative w-full min-h-[450px] sm:min-h-[500px] grid grid-cols-1 md:grid-cols-2 bg-gray-900 overflow-hidden">
+        <main class="relative w-full min-h-[450px] sm:min-h-[520px] grid grid-cols-1 md:grid-cols-2 bg-gray-900 overflow-hidden">
             
-            <!-- Left Side Image Section -->
-            <div class="relative w-full h-64 md:h-full min-h-[300px]">
-                <img src="Add.jpg" alt="Left Side Photo" class="w-full h-full object-cover">
+            <!-- Left Image Section -->
+            <div class="relative w-full h-72 md:h-full min-h-[320px]">
+                <img src="Add.jpg" alt="Friendly Editor Advertisement" class="w-full h-full object-cover">
                 
-                <!-- Left Side Action Buttons Container -->
-                <div class="absolute top-4 left-4 z-20 flex flex-col space-y-2">
-                    <!-- Payment Details Button -->
-                    <button onclick="openPaymentModal(event)" class="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold px-3 py-2 sm:px-4 rounded-lg shadow-lg transition duration-200 flex items-center space-x-2 text-xs md:text-sm active:scale-95">
+                <!-- Action Buttons Overlay -->
+                <div class="absolute top-5 left-5 z-20 flex flex-col space-y-3">
+                    <button onclick="toggleModal('paymentModal', true)" class="bg-yellow-500 hover:bg-yellow-400 text-gray-950 font-bold px-4 py-2.5 rounded-lg shadow-xl transition duration-200 transform hover:scale-105 active:scale-95 flex items-center space-x-2 text-xs md:text-sm">
                         <i class="fa-solid fa-credit-card"></i>
                         <span>Payment Details</span>
                     </button>
 
-                    <!-- Free Self Edit Button -->
-                    <button onclick="openSelfEditModal(event)" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-3 py-2 sm:px-4 rounded-lg shadow-lg transition duration-200 flex items-center space-x-2 text-xs md:text-sm active:scale-95">
+                    <button onclick="toggleModal('selfEditModal', true)" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2.5 rounded-lg shadow-xl transition duration-200 transform hover:scale-105 active:scale-95 flex items-center space-x-2 text-xs md:text-sm">
                         <i class="fa-solid fa-sliders"></i>
                         <span>Free Self Edit</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Right Side Image Section -->
-            <div class="relative w-full h-full min-h-[300px] flex items-center justify-center p-4 sm:p-6">
-                <img src="nnn.jpg" alt="Friendly Editor Service" class="absolute inset-0 w-full h-full object-cover opacity-85">
+            <!-- Right Image Section -->
+            <div class="relative w-full h-full min-h-[320px] flex items-center justify-center p-6">
+                <img src="nnn.jpg" alt="Friendly Editor Service Background" class="absolute inset-0 w-full h-full object-cover opacity-80">
                 
-                <!-- Center Welcome Box -->
-                <div id="welcome-box" class="hidden relative z-10 text-center text-white px-5 py-4 bg-black/60 rounded-xl backdrop-blur-xs max-w-xl mx-auto border border-white/20 shadow-xl transition-all duration-500">
-                    <h1 class="text-xl sm:text-2xl md:text-3xl font-extrabold drop-shadow-md">Welcome to Friendly Editor</h1>
-                    <p class="text-xs sm:text-sm font-medium text-gray-100 drop-shadow mt-1">
+                <!-- Welcome Overlay Box -->
+                <div id="welcome-box" class="hidden relative z-10 text-center text-white p-6 bg-black/70 rounded-2xl backdrop-blur-md max-w-md mx-auto border border-white/20 shadow-2xl transition-all duration-500">
+                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-wide drop-shadow-md">Welcome to Friendly Editor</h1>
+                    <p class="text-xs sm:text-sm font-medium text-gray-200 drop-shadow mt-2">
                         Your Trusted Partner for Printing &amp; Document Service.
                     </p>
                 </div>
@@ -243,9 +241,9 @@
     </div>
 
     <!-- Footer Section -->
-    <footer class="bg-[#002B7F] text-white py-4 px-4 flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0 text-center sm:text-left">
-        <!-- Left Side: Page Rating -->
-        <div class="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-3 text-xs">
+    <footer class="bg-[#002B7F] text-white py-4 px-6 flex flex-col sm:flex-row justify-between items-center space-y-3 sm:space-y-0 text-center sm:text-left border-t border-blue-900">
+        <!-- Rating Widget -->
+        <div class="flex flex-col sm:flex-row items-center space-y-1.5 sm:space-y-0 sm:space-x-3 text-xs">
             <span class="opacity-90 font-medium">මෙම පිටුව ගැන ඔබගේ ඇගයීම දක්වන්න:</span>
             <div class="flex items-center space-x-2">
                 <div class="star-rating">
@@ -255,133 +253,132 @@
                     <input type="radio" id="star2" name="rating" value="2" onclick="submitRating(2)"><label for="star2" title="2 stars"><i class="fa-solid fa-star"></i></label>
                     <input type="radio" id="star1" name="rating" value="1" onclick="submitRating(1)"><label for="star1" title="1 star"><i class="fa-solid fa-star"></i></label>
                 </div>
-                <span id="ratingMsg" class="text-green-400 font-semibold text-[11px] hidden">ස්තූතියි!</span>
+                <span id="ratingMsg" class="text-green-400 font-bold text-[11px] hidden animate-pulse">ස්තූතියි!</span>
             </div>
         </div>
 
-        <!-- Right Side: Copyright -->
-        <p class="text-center sm:text-right text-[11px] opacity-80">
-            Copyright&copy; 2026 Friendly Editor All rights reserved
+        <p class="text-[11px] opacity-75">
+            Copyright &copy; 2026 Friendly Editor. All rights reserved.
         </p>
     </footer>
 
     <!-- Payment Details Pop-up Modal -->
-    <div id="paymentModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-        <div class="bg-white rounded-xl max-w-md w-full p-5 sm:p-6 relative shadow-2xl transform transition-all text-left">
-            <button onclick="closePaymentModal()" class="absolute right-4 top-3 text-gray-400 hover:text-gray-600 text-2xl font-bold focus:outline-none p-1">&times;</button>
+    <div id="paymentModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-xs">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 relative shadow-2xl text-left transform transition-all scale-100">
+            <button onclick="toggleModal('paymentModal', false)" class="absolute right-4 top-3 text-gray-400 hover:text-gray-700 text-2xl font-bold focus:outline-none p-1">&times;</button>
             
-            <h3 class="text-lg sm:text-xl font-bold text-[#002B7F] mb-4 border-b pb-2 text-center">
+            <h3 class="text-lg sm:text-xl font-bold text-[#002B7F] mb-4 border-b pb-2 text-center flex items-center justify-center">
                 <i class="fa-solid fa-building-columns mr-2"></i>Payment Details
             </h3>
             
             <div class="space-y-3 text-xs sm:text-sm text-gray-700">
-                <div class="bg-blue-50 p-3.5 rounded-lg border border-blue-100">
-                    <p class="font-bold text-blue-900 mb-1">Bank Account Info</p>
-                    <p><span class="font-semibold">Bank:</span> Peoples Bank</p>
-                    <p><span class="font-semibold">Account Name:</span> A.H.G.C Gunarathna</p>
-                    <p><span class="font-semibold">Account No:</span> 089200200004498</p>
-                    <p><span class="font-semibold">Branch:</span> Katugasthota</p>
+                <div class="bg-blue-50/80 p-4 rounded-xl border border-blue-100 space-y-1">
+                    <p class="font-bold text-[#002B7F] text-sm mb-2">Bank Account Information</p>
+                    <p><span class="font-semibold text-gray-900">Bank:</span> Peoples Bank</p>
+                    <p><span class="font-semibold text-gray-900">Account Name:</span> A.H.G.C Gunarathna</p>
+                    <p><span class="font-semibold text-gray-900">Account No:</span> 089200200004498</p>
+                    <p><span class="font-semibold text-gray-900">Branch:</span> Katugasthota</p>
                 </div>
                 
-                <p class="text-xs text-gray-500 italic text-center mt-2">
+                <p class="text-xs text-gray-500 italic text-center pt-1">
                     මුදල් ගෙවූ පසු රිසිට්පත WhatsApp හරහා අප වෙත යොමු කරන්න.
                 </p>
             </div>
 
-            <button onclick="closePaymentModal()" class="w-full mt-4 py-2.5 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold rounded-lg transition text-xs sm:text-sm">Close</button>
+            <button onclick="toggleModal('paymentModal', false)" class="w-full mt-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold rounded-xl transition text-xs sm:text-sm">Close</button>
         </div>
     </div>
 
     <!-- Self Edit Tools Pop-up Modal -->
-    <div id="selfEditModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-3 sm:p-4">
-        <div class="bg-white rounded-xl max-w-xl w-full p-4 sm:p-6 relative shadow-2xl transform transition-all text-left max-h-[90vh] overflow-y-auto">
-            <button onclick="closeSelfEditModal()" class="absolute right-3 top-2 text-gray-400 hover:text-gray-600 text-2xl font-bold focus:outline-none p-1">&times;</button>
+    <div id="selfEditModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-xs">
+        <div class="bg-white rounded-2xl max-w-xl w-full p-5 sm:p-6 relative shadow-2xl text-left max-h-[90vh] overflow-y-auto">
+            <button onclick="toggleModal('selfEditModal', false)" class="absolute right-4 top-3 text-gray-400 hover:text-gray-700 text-2xl font-bold focus:outline-none p-1">&times;</button>
             
-            <h3 class="text-lg sm:text-xl font-bold text-[#002B7F] mb-4 border-b pb-2 text-center">
-                <i class="fa-solid fa-sliders mr-2"></i>Self Edit Tools
+            <h3 class="text-lg sm:text-xl font-bold text-[#002B7F] mb-5 border-b pb-2 text-center flex items-center justify-center">
+                <i class="fa-solid fa-sliders mr-2"></i>Free Online Document Tools
             </h3>
             
             <div class="space-y-5">
-                <!-- Convert from PDF Section -->
+                <!-- Convert from PDF -->
                 <div>
-                    <h4 class="text-xs sm:text-sm font-bold text-gray-700 uppercase tracking-wider mb-2.5 flex items-center">
-                        <i class="fa-solid fa-file-pdf text-red-600 mr-2 text-base sm:text-lg"></i> Convert from PDF
+                    <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center">
+                        <i class="fa-solid fa-file-pdf text-red-600 mr-2 text-base"></i> Convert from PDF
                     </h4>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                        <a href="https://www.ilovepdf.com/pdf_to_word" target="_blank" class="flex flex-col items-center justify-center p-2.5 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg border border-red-200 transition text-[11px] sm:text-xs font-semibold text-center shadow-xs">
-                            <i class="fa-solid fa-file-word text-lg sm:text-xl mb-1 text-blue-600"></i>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                        <a href="https://www.ilovepdf.com/pdf_to_word" target="_blank" class="flex flex-col items-center p-3 bg-red-50/60 hover:bg-red-100/80 text-red-700 rounded-xl border border-red-200/60 transition text-xs font-semibold text-center">
+                            <i class="fa-solid fa-file-word text-xl mb-1 text-blue-600"></i>
                             <span>PDF to Word</span>
                         </a>
-                        <a href="https://www.ilovepdf.com/pdf_to_jpg" target="_blank" class="flex flex-col items-center justify-center p-2.5 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg border border-red-200 transition text-[11px] sm:text-xs font-semibold text-center shadow-xs">
-                            <i class="fa-solid fa-file-image text-lg sm:text-xl mb-1 text-green-600"></i>
+                        <a href="https://www.ilovepdf.com/pdf_to_jpg" target="_blank" class="flex flex-col items-center p-3 bg-red-50/60 hover:bg-red-100/80 text-red-700 rounded-xl border border-red-200/60 transition text-xs font-semibold text-center">
+                            <i class="fa-solid fa-file-image text-xl mb-1 text-green-600"></i>
                             <span>PDF to JPG</span>
                         </a>
-                        <a href="https://www.ilovepdf.com/pdf_to_excel" target="_blank" class="flex flex-col items-center justify-center p-2.5 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg border border-red-200 transition text-[11px] sm:text-xs font-semibold text-center shadow-xs">
-                            <i class="fa-solid fa-file-excel text-lg sm:text-xl mb-1 text-green-700"></i>
+                        <a href="https://www.ilovepdf.com/pdf_to_excel" target="_blank" class="flex flex-col items-center p-3 bg-red-50/60 hover:bg-red-100/80 text-red-700 rounded-xl border border-red-200/60 transition text-xs font-semibold text-center">
+                            <i class="fa-solid fa-file-excel text-xl mb-1 text-green-700"></i>
                             <span>PDF to Excel</span>
                         </a>
-                        <a href="https://www.ilovepdf.com/pdf_to_powerpoint" target="_blank" class="flex flex-col items-center justify-center p-2.5 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg border border-red-200 transition text-[11px] sm:text-xs font-semibold text-center shadow-xs">
-                            <i class="fa-solid fa-file-powerpoint text-lg sm:text-xl mb-1 text-orange-600"></i>
+                        <a href="https://www.ilovepdf.com/pdf_to_powerpoint" target="_blank" class="flex flex-col items-center p-3 bg-red-50/60 hover:bg-red-100/80 text-red-700 rounded-xl border border-red-200/60 transition text-xs font-semibold text-center">
+                            <i class="fa-solid fa-file-powerpoint text-xl mb-1 text-orange-600"></i>
                             <span>PDF to PPTX</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Convert to PDF Section -->
+                <!-- Convert to PDF -->
                 <div>
-                    <h4 class="text-xs sm:text-sm font-bold text-gray-700 uppercase tracking-wider mb-2.5 flex items-center">
-                        <i class="fa-solid fa-file-export text-blue-600 mr-2 text-base sm:text-lg"></i> Convert to PDF
+                    <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center">
+                        <i class="fa-solid fa-file-export text-blue-600 mr-2 text-base"></i> Convert to PDF
                     </h4>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                        <a href="https://www.ilovepdf.com/word_to_pdf" target="_blank" class="flex flex-col items-center justify-center p-2.5 bg-blue-50 hover:bg-blue-100 text-blue-800 rounded-lg border border-blue-200 transition text-[11px] sm:text-xs font-semibold text-center shadow-xs">
-                            <i class="fa-solid fa-file-word text-lg sm:text-xl mb-1 text-blue-600"></i>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                        <a href="https://www.ilovepdf.com/word_to_pdf" target="_blank" class="flex flex-col items-center p-3 bg-blue-50/60 hover:bg-blue-100/80 text-blue-800 rounded-xl border border-blue-200/60 transition text-xs font-semibold text-center">
+                            <i class="fa-solid fa-file-word text-xl mb-1 text-blue-600"></i>
                             <span>Word to PDF</span>
                         </a>
-                        <a href="https://www.ilovepdf.com/jpg_to_pdf" target="_blank" class="flex flex-col items-center justify-center p-2.5 bg-blue-50 hover:bg-blue-100 text-blue-800 rounded-lg border border-blue-200 transition text-[11px] sm:text-xs font-semibold text-center shadow-xs">
-                            <i class="fa-solid fa-file-image text-lg sm:text-xl mb-1 text-green-600"></i>
+                        <a href="https://www.ilovepdf.com/jpg_to_pdf" target="_blank" class="flex flex-col items-center p-3 bg-blue-50/60 hover:bg-blue-100/80 text-blue-800 rounded-xl border border-blue-200/60 transition text-xs font-semibold text-center">
+                            <i class="fa-solid fa-file-image text-xl mb-1 text-green-600"></i>
                             <span>JPG to PDF</span>
                         </a>
-                        <a href="https://www.ilovepdf.com/excel_to_pdf" target="_blank" class="flex flex-col items-center justify-center p-2.5 bg-blue-50 hover:bg-blue-100 text-blue-800 rounded-lg border border-blue-200 transition text-[11px] sm:text-xs font-semibold text-center shadow-xs">
-                            <i class="fa-solid fa-file-excel text-lg sm:text-xl mb-1 text-green-700"></i>
+                        <a href="https://www.ilovepdf.com/excel_to_pdf" target="_blank" class="flex flex-col items-center p-3 bg-blue-50/60 hover:bg-blue-100/80 text-blue-800 rounded-xl border border-blue-200/60 transition text-xs font-semibold text-center">
+                            <i class="fa-solid fa-file-excel text-xl mb-1 text-green-700"></i>
                             <span>Excel to PDF</span>
                         </a>
-                        <a href="https://www.ilovepdf.com/powerpoint_to_pdf" target="_blank" class="flex flex-col items-center justify-center p-2.5 bg-blue-50 hover:bg-blue-100 text-blue-800 rounded-lg border border-blue-200 transition text-[11px] sm:text-xs font-semibold text-center shadow-xs">
-                            <i class="fa-solid fa-file-powerpoint text-lg sm:text-xl mb-1 text-orange-600"></i>
+                        <a href="https://www.ilovepdf.com/powerpoint_to_pdf" target="_blank" class="flex flex-col items-center p-3 bg-blue-50/60 hover:bg-blue-100/80 text-blue-800 rounded-xl border border-blue-200/60 transition text-xs font-semibold text-center">
+                            <i class="fa-solid fa-file-powerpoint text-xl mb-1 text-orange-600"></i>
                             <span>PPT to PDF</span>
                         </a>
                     </div>
                 </div>
             </div>
 
-            <button onclick="closeSelfEditModal()" class="w-full mt-5 py-2.5 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold rounded-lg transition text-xs sm:text-sm">Close</button>
+            <button onclick="toggleModal('selfEditModal', false)" class="w-full mt-6 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold rounded-xl transition text-xs sm:text-sm">Close</button>
         </div>
     </div>
 
     <!-- Track Your Item Pop-up Modal -->
-    <div id="trackModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-        <div class="bg-white rounded-xl max-w-md w-full p-5 sm:p-6 text-center relative shadow-2xl transform transition-all">
-            <button onclick="closeModal()" class="absolute right-4 top-3 text-gray-400 hover:text-gray-600 text-2xl font-bold focus:outline-none p-1">&times;</button>
+    <div id="trackModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-xs">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 text-center relative shadow-2xl">
+            <button onclick="closeTrackModal()" class="absolute right-4 top-3 text-gray-400 hover:text-gray-700 text-2xl font-bold focus:outline-none p-1">&times;</button>
             
-            <h3 class="text-lg sm:text-xl font-bold text-[#002B7F] mb-4">Track Your Document</h3>
+            <h3 class="text-lg sm:text-xl font-bold text-[#002B7F] mb-4 flex items-center justify-center">
+                <i class="fa-solid fa-magnifying-glass mr-2"></i> Track Your Document
+            </h3>
             
-            <input type="tel" id="jobNoInput" placeholder="දුරකථන අංකය ඇතුළත් කරන්න (eg: 0751659106)" class="w-full px-4 py-2.5 border border-gray-300 rounded-lg mb-3 focus:ring-2 focus:ring-[#002B7F] focus:outline-none text-xs sm:text-sm text-center">
+            <input type="tel" id="jobNoInput" placeholder="දුරකථන අංකය ඇතුළත් කරන්න (eg: 0751659106)" class="w-full px-4 py-3 border border-gray-300 rounded-xl mb-3 focus:ring-2 focus:ring-[#002B7F] focus:outline-none text-xs sm:text-sm text-center shadow-xs">
             
-            <button onclick="trackItem()" class="w-full py-2.5 bg-[#002B7F] hover:bg-blue-900 text-white font-bold rounded-lg transition text-xs sm:text-sm shadow-md">Search</button>
+            <button onclick="trackItem()" class="w-full py-3 bg-[#002B7F] hover:bg-blue-900 text-white font-bold rounded-xl transition text-xs sm:text-sm shadow-md">Search Status</button>
 
-            <div id="result" class="mt-4 font-semibold text-xs sm:text-sm"></div>
+            <div id="result" class="mt-4 font-semibold text-xs sm:text-sm min-h-[24px]"></div>
         </div>
     </div>
 
-    <!-- JavaScript Logic -->
+    <!-- Scripts -->
     <script>
         const welcomeBox = document.getElementById('welcome-box');
 
         document.addEventListener('DOMContentLoaded', () => {
             const hasSeenWelcome = localStorage.getItem('hasSeenWelcome');
-
             if (!hasSeenWelcome) {
                 welcomeBox.classList.remove('hidden');
-
                 setTimeout(() => {
                     welcomeBox.classList.add('hidden');
                     localStorage.setItem('hasSeenWelcome', 'true');
@@ -397,6 +394,26 @@
             }, 3000);
         }
 
+        // Generic Modal Toggle Handler
+        function toggleModal(modalId, show) {
+            closeAllDropdowns();
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                if (show) {
+                    modal.classList.remove('hidden');
+                } else {
+                    modal.classList.add('hidden');
+                }
+            }
+        }
+
+        function closeTrackModal() {
+            toggleModal('trackModal', false);
+            document.getElementById('result').innerHTML = '';
+            document.getElementById('jobNoInput').value = '';
+        }
+
+        // Dropdowns Handling
         function closeAllDropdowns() {
             document.querySelectorAll('.dropdown-menu').forEach(menu => {
                 menu.classList.add('hidden');
@@ -430,16 +447,18 @@
             }
 
             if (action === 'track') {
-                openModal();
+                toggleModal('trackModal', true);
             }
         }
 
+        // Global Click Listener for Dropdown closing
         document.addEventListener('click', (event) => {
-            if (!event.target.closest('.dropdown-menu')) {
+            if (!event.target.closest('.dropdown-container')) {
                 closeAllDropdowns();
             }
         });
 
+        // Mobile Menu Button Toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -449,37 +468,7 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        function openPaymentModal(e) {
-            if (e) e.stopPropagation();
-            closeAllDropdowns();
-            document.getElementById('paymentModal').classList.remove('hidden');
-        }
-
-        function closePaymentModal() {
-            document.getElementById('paymentModal').classList.add('hidden');
-        }
-
-        function openSelfEditModal(e) {
-            if (e) e.stopPropagation();
-            closeAllDropdowns();
-            document.getElementById('selfEditModal').classList.remove('hidden');
-        }
-
-        function closeSelfEditModal() {
-            document.getElementById('selfEditModal').classList.add('hidden');
-        }
-
-        function openModal() {
-            closeAllDropdowns();
-            document.getElementById('trackModal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('trackModal').classList.add('hidden');
-            document.getElementById('result').innerHTML = '';
-            document.getElementById('jobNoInput').value = '';
-        }
-
+        // Google Sheets Live Tracking
         async function trackItem() {
             let phoneInput = document.getElementById('jobNoInput').value.trim();
             phoneInput = phoneInput.replace(/\s+/g, '').replace(/-/g, '').replace(/^\+94/, '0');
@@ -518,7 +507,7 @@
                 }
 
                 if (foundUrl) {
-                    resultDiv.innerHTML = `<a href="${foundUrl}" target="_blank" class="text-blue-600 underline font-bold">ඔබගේ ලේඛනය ලබා ගැනීමට මෙතැන ක්ලික් කරන්න</a>`;
+                    resultDiv.innerHTML = `<a href="${foundUrl}" target="_blank" class="text-blue-600 hover:text-blue-800 underline font-bold">ඔබගේ ලේඛනය ලබා ගැනීමට මෙතැන ක්ලික් කරන්න</a>`;
                 } else {
                     resultDiv.innerHTML = "<span class='text-red-500'>ඇතුළත් කළ දුරකථන අංකයට අදාළ දත්ත හමු නොවීය.</span>";
                 }
